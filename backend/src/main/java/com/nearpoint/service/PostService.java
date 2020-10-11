@@ -3,7 +3,7 @@ package com.nearpoint.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.nerpoint.model.Post;
+import com.nearpoint.model.Post;
 
 public interface PostService {
 	
@@ -17,5 +17,5 @@ public interface PostService {
 
 	void deletePost(Post post);
 	
-	//List<Post>getAllPosts();
+	
 }

@@ -22,14 +22,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nearpoint.DTO.PostDTO;
-import com.nearpoint.DTO.UsuarioDTO;
+import com.nearpoint.beans.PostDTO;
+import com.nearpoint.beans.UsuarioDTO;
 import com.nearpoint.exception.ResourceNotFoundException;
+import com.nearpoint.model.Post;
+import com.nearpoint.model.Usuario;
 import com.nearpoint.repository.UsuarioCustomRepository;
 import com.nearpoint.repository.UsuarioRepository;
 import com.nearpoint.service.UsuarioService;
-import com.nerpoint.model.Post;
-import com.nerpoint.model.Usuario;
 
 
 

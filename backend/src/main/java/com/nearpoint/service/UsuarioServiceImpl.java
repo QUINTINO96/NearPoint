@@ -10,11 +10,11 @@ import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nearpoint.DTO.UsuarioDTO;
+import com.nearpoint.beans.UsuarioDTO;
+import com.nearpoint.model.Post;
+import com.nearpoint.model.Usuario;
 import com.nearpoint.repository.UsuarioCustomRepository;
 import com.nearpoint.repository.UsuarioRepository;
-import com.nerpoint.model.Post;
-import com.nerpoint.model.Usuario;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService{

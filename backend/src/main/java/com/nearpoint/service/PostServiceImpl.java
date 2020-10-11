@@ -6,9 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nearpoint.DTO.UsuarioDTO;
+import com.nearpoint.model.Post;
 import com.nearpoint.repository.PostRepository;
-import com.nerpoint.model.Post;
 
 @Service
 public class PostServiceImpl implements PostService{
@@ -44,4 +43,4 @@ public class PostServiceImpl implements PostService{
 	//@Override
 	//public List<Post> getAllProprietatios(){
 		//return this.empregadoRepository.findAllProprietario();
-	}
+}

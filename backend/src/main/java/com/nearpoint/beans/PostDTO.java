@@ -1,4 +1,4 @@
-package com.nearpoint.DTO;
+package com.nearpoint.beans;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,10 +15,11 @@ public class PostDTO implements Serializable{
 		
 	}
 
-	public PostDTO(long id, String nome) {
+	public PostDTO(long id, String nome,String role) {
 		super();
 		this.id = id;
-		Nome = nome;
+		this.Nome = nome;
+		this.role = role;
 	}
 
 	public long getId() {

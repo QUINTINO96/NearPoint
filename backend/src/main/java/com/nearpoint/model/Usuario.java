@@ -1,4 +1,4 @@
-package com.nerpoint.model;
+package com.nearpoint.model;
 
 import java.util.Date;
 import java.util.List;
@@ -28,6 +28,7 @@ public class Usuario {
 	private String CPF;
 	private String Sobrenome;
 	private String NomeEmpresa;
+	private Post post;
 	private List<Post> listPosts;
 	
 	public Usuario() {
@@ -38,17 +39,18 @@ public class Usuario {
 
 
 	public Usuario(long id, String nome, String endereco, String emailId, String telefone, String cPF, String sobrenome,
-			String nomeEmpresa, String endereco2, List<Post> listPosts) {
+			String nomeEmpresa, String Endereco, Post post, List<Post> listPosts) {
 		super();
 		this.id = id;
 		this.Nome = nome;
-		this.Endereco = endereco;
+		this.Endereco = Endereco;
 		this.emailId = emailId;
 		this.telefone = telefone;
 		this.CPF = cPF;
 		this.Sobrenome = sobrenome;
 		this.NomeEmpresa = nomeEmpresa;
-		this.Endereco = endereco2;
+		this.Endereco = Endereco;
+		this.post = post;
 		this.listPosts = listPosts;
 	}
 
@@ -88,8 +90,8 @@ public class Usuario {
 	}
 
 	
-	public void setEndereco(String endereco) {
-		this.Endereco = endereco;
+	public void setEndereco(String Endereco) {
+		this.Endereco = Endereco;
 	}
 
 	@Column(name = "nome", nullable = false)
@@ -112,16 +114,34 @@ public class Usuario {
 		this.emailId = emailId;
 	}
 
-	@Column(name = "cpf", nullable = false)
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CPF_id", referencedColumnName = "id")
+    @JoinColumn(name = "Post_id", referencedColumnName = "id")
+	public Post getPost() {
+		return post;
+		
+	}
+	
+
 	public String getCPF() {
 		return CPF;
 	}
 
+
+
+
 	public void setCPF(String cPF) {
 		CPF = cPF;
 	}
+
+
+
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
+
+
 
 	@Column(name = "sobrenome", nullable = false)
 	public String getSobrenome() {
@@ -133,7 +153,6 @@ public class Usuario {
 		Sobrenome = sobrenome;
 	}
 
-	@Column(name = "posts", nullable = false)
 	@OneToMany
 	@JoinColumn(name = "usuario_id")
 	public List<Post> getListPosts() {

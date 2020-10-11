@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
-import com.nerpoint.model.Usuario;
+import com.nearpoint.model.Usuario;
 
 @Repository
 public class UsuarioCustomRepository {

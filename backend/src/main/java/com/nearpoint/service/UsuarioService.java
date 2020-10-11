@@ -3,8 +3,10 @@ package com.nearpoint.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.nearpoint.DTO.UsuarioDTO;
-import com.nerpoint.model.Usuario;
+import org.springframework.stereotype.Service;
+
+import com.nearpoint.beans.UsuarioDTO;
+import com.nearpoint.model.Usuario;
 
 public interface UsuarioService {
 	

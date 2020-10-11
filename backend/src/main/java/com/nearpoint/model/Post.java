@@ -1,4 +1,4 @@
-package com.nerpoint.model;
+package com.nearpoint.model;
 
 import java.util.Date;
 
@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 @Entity
@@ -30,10 +33,11 @@ SUPERVISÃO, GERÊNCIA, PROPRIETÁRIO) e salário.*/
 		
 	}
 	
-	public Post(long id, String nome) {
+	public Post(long id, String nome,String role) {
 		super();
 		this.id = id;
 		this.Nome = nome;
+		this.role = role;
 	}
 
 	@Id

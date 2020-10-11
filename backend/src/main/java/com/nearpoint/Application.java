@@ -1,26 +1,43 @@
-package net.guides.springboot2.springboot2jpacrudexample;
+package com.nearpoint;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.nearpoint.controller.PostController;
+import com.nearpoint.model.Post;
+import com.nearpoint.model.Usuario;
 import com.nearpoint.repository.PostRepository;
 import com.nearpoint.repository.UsuarioRepository;
-import com.nerpoint.model.Post;
-import com.nerpoint.model.Usuario;
+import com.nearpoint.service.PostService;
+import com.nearpoint.service.PostServiceImpl;
 @SpringBootApplication
+
+  @EnableTransactionManagement
+  
+  @ComponentScan(basePackageClasses= {PostController.class, PostService.class,PostServiceImpl.class,PostRepository.class,Post.class})
+  @ComponentScan(basePackages = {"com.nearpoint.controller"})
+  @EntityScan(basePackages = { "com.nearpoint.model" })
+  @EnableJpaRepositories(basePackages = { "com.nearpoint.repository" })
+ 
 public class Application implements CommandLineRunner {
 
 	@Bean
+	
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
 	}
 	
   
     @Override
+    
     public void run(String...args) throws Exception {
 
 //        // Create an employee
@@ -43,6 +60,7 @@ public class Application implements CommandLineRunner {
 //        employeeRepository.save(employee2);
     }
 
+   
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
