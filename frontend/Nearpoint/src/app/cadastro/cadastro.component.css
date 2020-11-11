@@ -1,0 +1,37 @@
+.centro{
+    text-align: center;
+}
+
+.titulo{
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #460C0C;
+}
+
+.borda{
+    border-radius: 30%;
+}
+
+body{
+    background: #2D2E2E;
+}
+
+.btn-personalizado{
+    color: #fff;
+    background-color: #460C0C;
+    border-color: #460C0C;
+}
+
+.btn-personalizado:hover{
+    color: #460C0C;
+    background-color: #fff;
+    border-color: #460C0C;
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
