@@ -11,6 +11,10 @@ import { PostListComponent } from './post-list/post-list.component';
 import { UsuarioListComponent } from './usuario-list/usuario-list.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { PainelPadraoComponent } from './painel-padrao/painel-padrao.component';
+
+import {MatTabsModule} from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,10 +27,14 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     UsuarioListComponent,
     LoginComponent,
     CadastroComponent,
+    PainelPadraoComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
