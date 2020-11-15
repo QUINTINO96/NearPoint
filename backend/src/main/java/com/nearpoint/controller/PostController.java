@@ -77,9 +77,11 @@ public class PostController {
 	public ResponseEntity<Post> updatePost(@PathVariable(value = "id") Long postId,
 			@Valid @RequestBody Post postDetails) throws ResourceNotFoundException {
 		Post post = postService.getPostById(postId)
-				.orElseThrow(() -> new ResourceNotFoundException("Empregado not found for this id :: " + postId));
+				.orElseThrow(() -> new ResourceNotFoundException("Post não encontrado para este Id :: " + postId));
 
-		post.setNome(postDetails.getNome());
+		post.setTitulo(postDetails.getTitulo());
+		post.setDescrição(postDetails.getDescrição());
+		post.setFotoanuncio(postDetails.getFotoanuncio());
 		final Post updatedPost = postService.updatePost(postDetails);
 		return ResponseEntity.ok(updatedPost);
 	}
@@ -89,7 +91,7 @@ public class PostController {
 	public Map<String, Boolean> deletePost(@PathVariable(value = "id") Long postId)
 			throws ResourceNotFoundException {
 		Post post = postService.getPostById(postId)
-				.orElseThrow(() -> new ResourceNotFoundException("Empregado not found for this id :: " + postId));
+				.orElseThrow(() -> new ResourceNotFoundException("Post não encontrado para este Id :: " + postId));
 
 		postService.deletePost(post);
 		
@@ -100,7 +102,9 @@ public class PostController {
 	
 	public PostDTO convertToDto(Post post) {
 		PostDTO postDTO = modelMapper.map(post, PostDTO.class);
-		postDTO.setRole("Supervisão");
+		postDTO.setTitulo(post.getTitulo());
+		postDTO.setDescrição(post.getDescrição());
+		postDTO.setFotoanuncio(post.getFotoanuncio());
 		return postDTO;
 	}
 	

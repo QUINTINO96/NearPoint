@@ -1,5 +1,6 @@
 package com.nearpoint.model;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,60 +19,90 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "post")
 public class Post {
-	/*Nome, Endereço, E-mail, Telefone, CPF,
-Data de Nascimento, Função (Tipo Enumerado com as opções: ADMINISTRATIVO,
-SUPERVISÃO, GERÊNCIA, PROPRIETÁRIO) e salário.*/
+	
 	
 	private long id;
-	private String Nome;
-	private String role;
+	private byte[] fotoanuncio;
+	private String titulo;
+	private String descrição;
 	
-	//@OneToOne(mappedBy = "proprietario")
-    //private Empresa empresa;
+	
 	
 	public Post() {
 		
 	}
 	
-	public Post(long id, String nome,String role) {
+	
+
+	public Post(long id, byte[] fotoanuncio, String titulo, String descrição) {
 		super();
 		this.id = id;
-		this.Nome = nome;
-		this.role = role;
+		this.fotoanuncio = fotoanuncio;
+		this.titulo = titulo;
+		this.descrição = descrição;
 	}
+
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
+
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	@Column(name = "nome_Completo", nullable = false)
-	public String getNome() {
-		return Nome;
-	}
-	
-	public void setNome(String nome) {
-		Nome = nome;
+
+
+	@Column(name = "fotoAnuncio", length = 1000)
+	public byte[] getFotoanuncio() {
+		return fotoanuncio;
 	}
 
-	@Column(name= "Role",nullable = false)
-	public String getRole() {
-		return role;
+
+
+	public void setFotoanuncio(byte[] fotoanuncio) {
+		this.fotoanuncio = fotoanuncio;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+
+
+	@Column(name = "titulo", nullable = false)
+	public String getTitulo() {
+		return titulo;
 	}
+
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
+
+	@Column(name = "descricao", nullable = false)
+	public String getDescrição() {
+		return descrição;
+	}
+
+
+
+	public void setDescrição(String descrição) {
+		this.descrição = descrição;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", Nome=" + Nome + ", role=" + role + "]";
+		return "Post [id=" + id + ", fotoanuncio=" + Arrays.toString(fotoanuncio) + ", titulo=" + titulo
+				+ ", descrição=" + descrição + "]";
 	}
-
-
+	
+	
 	
 }

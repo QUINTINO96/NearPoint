@@ -8,18 +8,20 @@ public class PostDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String Nome;
-	private String role;
+	private byte[] fotoanuncio;
+	private String titulo;
+	private String descrição;
 	
 	public PostDTO() {
 		
 	}
 
-	public PostDTO(long id, String nome,String role) {
+	public PostDTO(long id, byte[] fotoanuncio, String titulo, String descrição) {
 		super();
 		this.id = id;
-		this.Nome = nome;
-		this.role = role;
+		this.fotoanuncio = fotoanuncio;
+		this.titulo = titulo;
+		this.descrição = descrição;
 	}
 
 	public long getId() {
@@ -30,21 +32,33 @@ public class PostDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getNome() {
-		return Nome;
+	public byte[] getFotoanuncio() {
+		return fotoanuncio;
 	}
 
-	public void setNome(String nome) {
-		Nome = nome;
+	public void setFotoanuncio(byte[] fotoanuncio) {
+		this.fotoanuncio = fotoanuncio;
 	}
 
-	public String getRole() {
-		return role;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
-	
+
+	public String getDescrição() {
+		return descrição;
+	}
+
+	public void setDescrição(String descrição) {
+		this.descrição = descrição;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	
 }

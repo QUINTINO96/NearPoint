@@ -5,37 +5,44 @@ import java.util.Date;
 import java.util.List;
 
 import com.nearpoint.model.Post;
+import com.nearpoint.model.Endereco;
+import com.nearpoint.enums.Tipo;
 
 public class UsuarioDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String role;
-	private String Nome;
-	private String Endereco;
-	private String emailId;
+	private String nome;
+	private String email;
 	private String telefone;
-	private String CPF;
-	private String Sobrenome;
-	private String NomeEmpresa;
+	private String cpf;
+	private Tipo tipoUsuario;
+	private String sobrenome;
+	private byte[] fotoPerfil;
+	private Endereco enderecoUsu;
+	private String dataNascimento;
+	private String senha;
 	private List<Post> listPosts;
 	
 	public UsuarioDTO() {
 		super();
 	}
 
-	public UsuarioDTO(long id, String role, String nome, String endereco, String emailId, String telefone, String cPF,
-			String sobrenome, String nomeEmpresa, List<Post> listPosts) {
+	public UsuarioDTO(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario,
+			String sobrenome,byte[]fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
+			List<Post> listPosts) {
 		super();
 		this.id = id;
-		this.role = role;
-		Nome = nome;
-		Endereco = endereco;
-		this.emailId = emailId;
+		this.nome = nome;
+		this.email = email;
 		this.telefone = telefone;
-		CPF = cPF;
-		Sobrenome = sobrenome;
-		NomeEmpresa = nomeEmpresa;
+		this.cpf = cpf;
+		this.tipoUsuario = tipoUsuario;
+		this.sobrenome = sobrenome;
+		this.fotoPerfil = fotoPerfil;
+		this.enderecoUsu = enderecoUsu;
+		this.dataNascimento = dataNascimento;
+		this.senha = senha;
 		this.listPosts = listPosts;
 	}
 
@@ -47,36 +54,20 @@ public class UsuarioDTO implements Serializable{
 		this.id = id;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 
-	public String getEndereco() {
-		return Endereco;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEndereco(String endereco) {
-		Endereco = endereco;
-	}
-
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getTelefone() {
@@ -87,28 +78,60 @@ public class UsuarioDTO implements Serializable{
 		this.telefone = telefone;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Tipo getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(Tipo tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getSobrenome() {
-		return Sobrenome;
+		return sobrenome;
 	}
 
 	public void setSobrenome(String sobrenome) {
-		Sobrenome = sobrenome;
+		this.sobrenome = sobrenome;
 	}
 
-	public String getNomeEmpresa() {
-		return NomeEmpresa;
+	public byte[] getFotoPerfil() {
+		return fotoPerfil;
 	}
 
-	public void setNomeEmpresa(String nomeEmpresa) {
-		NomeEmpresa = nomeEmpresa;
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
+	}
+
+	public Endereco getEnderecoUsu() {
+		return enderecoUsu;
+	}
+
+	public void setEnderecoUsu(Endereco enderecoUsu) {
+		this.enderecoUsu = enderecoUsu;
+	}
+
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public List<Post> getListPosts() {
@@ -122,6 +145,8 @@ public class UsuarioDTO implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	
 
 	
 	

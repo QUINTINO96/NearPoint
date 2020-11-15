@@ -92,11 +92,16 @@ public class UsuarioController {
 		
 		usuario.setNome(usuarioDetalhes.getNome());
 		usuario.setTelefone(usuarioDetalhes.getTelefone());
-		usuario.setEndereco(usuarioDetalhes.getEndereco());
+		usuario.setEnderecoUsu(usuarioDetalhes.getEnderecoUsu());
 		usuario.setListPosts(usuarioDetalhes.getListPosts());
-		usuario.setEmailId(usuarioDetalhes.getEmailId());
+		usuario.setEmail(usuarioDetalhes.getEmail());
 		usuario.setTelefone(usuarioDetalhes.getTelefone());
-		usuario.setCPF(usuarioDetalhes.getCPF());
+		usuario.setCpf(usuarioDetalhes.getCpf());
+		usuario.setDataNascimento(usuarioDetalhes.getDataNascimento());
+		usuario.setFotoPerfil(usuarioDetalhes.getFotoPerfil());
+		usuario.setSenha(usuarioDetalhes.getSenha());
+		usuario.setSobrenome(usuarioDetalhes.getSobrenome());
+		usuario.setTipoUsuario(usuarioDetalhes.getTipoUsuario());
 		final Usuario upUsuario = usuarioRepository.save(usuario);
 		return ResponseEntity.ok(upUsuario);
 	}

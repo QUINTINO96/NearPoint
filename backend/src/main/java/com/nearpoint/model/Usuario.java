@@ -15,129 +15,134 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 
+import com.nearpoint.enums.Tipo;
+
 
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
 
 	private long id;
-	private String Nome;
-	private String Endereco;
-	private String emailId;
+	private String nome;
+	private String email;
 	private String telefone;
-	private String CPF;
-	private String Sobrenome;
-	private String NomeEmpresa;
-	private Post post;
+	private String cpf;
+	private Tipo tipoUsuario;
+	private String sobrenome;
+	private byte[] fotoPerfil;
+	private Endereco enderecoUsu;
+	private String dataNascimento;
+	private String senha;
+	private Post anuncio;
 	private List<Post> listPosts;
 	
 	public Usuario() {
 		
 	}
-	
 
-
-
-	public Usuario(long id, String nome, String endereco, String emailId, String telefone, String cPF, String sobrenome,
-			String nomeEmpresa, String Endereco, Post post, List<Post> listPosts) {
+	public Usuario(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario, String sobrenome, 
+			byte[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
 		super();
 		this.id = id;
-		this.Nome = nome;
-		this.Endereco = Endereco;
-		this.emailId = emailId;
+		this.nome = nome;
+		this.email = email;
 		this.telefone = telefone;
-		this.CPF = cPF;
-		this.Sobrenome = sobrenome;
-		this.NomeEmpresa = nomeEmpresa;
-		this.Endereco = Endereco;
-		this.post = post;
+		this.cpf = cpf;
+		this.tipoUsuario = tipoUsuario;
+		this.sobrenome = sobrenome;
+		this.fotoPerfil = fotoPerfil;
+		this.enderecoUsu = enderecoUsu;
+		this.dataNascimento = dataNascimento;
+		this.senha = senha;
+		this.anuncio = anuncio;
 		this.listPosts = listPosts;
 	}
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getId() {
 		return id;
 	}
+
+
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
-	@Column(name = "nome_empresa", nullable = false)
-	public String getNomeEmpresa() {
-		return NomeEmpresa;
+
+
+
+
+	@Column(name = "nome", nullable = false)
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeEmpresa(String nomeEmpresa) {
-		this.NomeEmpresa = nomeEmpresa;
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	
-	@Column(name="telefone", nullable = false)
+
+
+
+	@Column(name = "email", nullable = false)
+	public String getEmail() {
+		return email;
+	}
+
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+
+	@Column(name = "telefone", nullable = false)
 	public String getTelefone() {
 		return telefone;
 	}
+
+
 
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-	@Column(name = "endereco", nullable = false)
-	public String getEndereco() {
-		return Endereco;
-	}
-
-	
-	public void setEndereco(String Endereco) {
-		this.Endereco = Endereco;
-	}
-
-	@Column(name = "nome", nullable = false)
-	public String getNome() {
-		return Nome;
-	}
 
 
-	public void setNome(String nome) {
-		Nome = nome;
-	}
 
-	@Column(name = "email", nullable = false)
-	public String getEmailId() {
-		return emailId;
-	}
-
-	
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Post_id", referencedColumnName = "id")
-	public Post getPost() {
-		return post;
-		
-	}
-	
-
-	public String getCPF() {
-		return CPF;
+	@Column(name = "cpf", nullable = false)
+	public String getCpf() {
+		return cpf;
 	}
 
 
 
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 
 
 
-	public void setPost(Post post) {
-		this.post = post;
+	@Column(name = "tipo", nullable = false)
+	public Tipo getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+
+
+
+	public void setTipoUsuario(Tipo tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 
@@ -145,13 +150,77 @@ public class Usuario {
 
 	@Column(name = "sobrenome", nullable = false)
 	public String getSobrenome() {
-		return Sobrenome;
+		return sobrenome;
 	}
+
+
 
 
 	public void setSobrenome(String sobrenome) {
-		Sobrenome = sobrenome;
+		this.sobrenome = sobrenome;
 	}
+
+
+	
+
+	@Column(name = "fotoPerfil", length = 1000)
+	public byte[] getFotoPerfil() {
+		return fotoPerfil;
+	}
+
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
+	}
+
+	@Column(name = "endereco", nullable = false)
+	public Endereco getEnderecoUsu() {
+		return enderecoUsu;
+	}
+
+
+
+
+	public void setEnderecoUsu(Endereco enderecoUsu) {
+		this.enderecoUsu = enderecoUsu;
+	}
+
+
+
+
+	@Column(name = "dataNascimento", nullable = false)
+	public String getDataNascimento() {
+		return dataNascimento;
+	}
+
+
+
+
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+
+
+
+	@Column(name = "senha", nullable = false)
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Post_id", referencedColumnName = "id")
+	public Post getPost() {
+		return anuncio;
+		
+	}
+
 
 	@OneToMany
 	@JoinColumn(name = "usuario_id")
@@ -163,12 +232,11 @@ public class Usuario {
 		this.listPosts = listPosts;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", Nome=" + Nome + ", Endereco=" + Endereco + ", emailId=" + emailId
-				+ ", telefone=" + telefone + ", CPF=" + CPF + ", Sobrenome=" + Sobrenome + ", NomeEmpresa="
-				+ NomeEmpresa + ", listPosts=" + listPosts + "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
+				+ ", tipoUsuario=" + tipoUsuario + ", sobrenome=" + sobrenome + ", enderecoUsu=" + enderecoUsu
+				+ ", dataNascimento=" + dataNascimento + ", senha=" + senha + ", anuncio=" + anuncio + ", listPosts="
+				+ listPosts + "]";
 	}
 }
