@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreatePostComponent } from './create-post/create-post.component';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { UsuarioDetailsComponent } from './usuario-details/usuario-details.component';
@@ -15,11 +14,12 @@ import { PainelPadraoComponent } from './painel-padrao/painel-padrao.component';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CriarPostComponent } from './criar-post/criar-post.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreatePostComponent,
     UpdatePostComponent,
     PostDetailsComponent,
     UsuarioDetailsComponent,
@@ -28,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     CadastroComponent,
     PainelPadraoComponent,
+    CriarPostComponent,
+
     
   ],
   imports: [
