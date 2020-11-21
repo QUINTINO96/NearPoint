@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 
 import com.nearpoint.enums.Tipo;
+import com.nearpoint.model.Endereco;
 
 
 @Entity
@@ -172,7 +173,8 @@ public class Usuario {
 		this.fotoPerfil = fotoPerfil;
 	}
 
-	@Column(name = "endereco", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Endereco_id", referencedColumnName = "id")
 	public Endereco getEnderecoUsu() {
 		return enderecoUsu;
 	}
@@ -216,9 +218,13 @@ public class Usuario {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Post_id", referencedColumnName = "id")
-	public Post getPost() {
+	public Post getAnuncio() {
 		return anuncio;
 		
+	}
+	
+	public void  setAnuncio (Post anuncio) {
+		this.anuncio = anuncio;
 	}
 
 

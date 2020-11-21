@@ -20,7 +20,7 @@ public class Endereco {
 	private String CEP;
 	
 	public Endereco() {
-		super();
+		
 	}
 
 	public Endereco(long id, String rua, String bairro, String complemento, String cidade, String estado, String cEP) {

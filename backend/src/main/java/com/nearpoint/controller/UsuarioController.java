@@ -54,7 +54,7 @@ public class UsuarioController {
 		return usuarioRepository.findAll();
 	}
 
-    	@CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/usuarios/inner")
 	public List<Usuario> findAllusuarios(){
 		return usuarioRepository.findAllInnerJoin();
@@ -71,7 +71,7 @@ public class UsuarioController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/usuario")
+	@PostMapping("/cadastro")
 	public Usuario addUsuario(@Validated @RequestBody Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}

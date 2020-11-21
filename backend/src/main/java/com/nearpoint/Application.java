@@ -22,7 +22,7 @@ import com.nearpoint.service.PostServiceImpl;
 
   @EnableTransactionManagement
   
-  @ComponentScan(basePackageClasses= {PostController.class, PostService.class,PostServiceImpl.class,PostRepository.class,Post.class})
+  @ComponentScan(basePackageClasses= {PostController.class, PostService.class,PostServiceImpl.class,PostRepository.class,Post.class,})
   @ComponentScan(basePackages = {"com.nearpoint.controller"})
   @EntityScan(basePackages = { "com.nearpoint.model" })
   @EnableJpaRepositories(basePackages = { "com.nearpoint.repository" })
