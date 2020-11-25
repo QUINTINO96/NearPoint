@@ -49,7 +49,7 @@ public class UsuarioController {
 
 	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("usuarios")
+	@GetMapping("/usuarios")
 	public List<Usuario> getAlUsuarios(){
 		return usuarioRepository.findAll();
 	}
