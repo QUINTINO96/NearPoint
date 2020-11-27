@@ -1,0 +1,5 @@
+package com.nearpoint.repository;
+
+public class UsuarioRepository {
+
+}

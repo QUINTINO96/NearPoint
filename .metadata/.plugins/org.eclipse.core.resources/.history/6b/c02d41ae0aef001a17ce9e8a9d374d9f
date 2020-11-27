@@ -1,0 +1,9 @@
+package com.nearpoint.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.nearpoint.model.CadastroUsuario;
+
+public interface UsuarioRepository2 extends CrudRepository<CadastroUsuario, String>{
+	CadastroUsuario findByCodigo(long codigo); 
+}

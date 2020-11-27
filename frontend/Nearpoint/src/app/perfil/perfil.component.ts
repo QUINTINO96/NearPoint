@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService }  from '../usuario.service'
+import { Usuario }  from '../usuario'
+import { NgForm }  from '@angular/forms'
 
 @Component({
   selector: 'app-perfil',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor() { }
+  usuario = {} as Usuario
+  usuarios: Usuario[]
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+  this.getUsuarios()
+  }
+
+  getUsuarios() {
+    this.usuarioService.getUsuarios().subscribe((usuarios: Usuario[]) => {
+      this.usuarios = usuarios;
+    });
   }
 
 }

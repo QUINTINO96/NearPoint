@@ -1,0 +1,31 @@
+package com.nearpoint.model;
+
+public class Endereco {
+
+	//Atributos 
+	
+	private String Bairro;
+	private int Cep;
+	private String Complemento;
+	private String Estado;
+	private String NomeRua;
+	private String Cidade;
+	
+	//Construtores:
+	
+	public Endereco(String bairro, int cep, String complemento, String estado, String nomeRua, String cidade) {
+		super();
+		Bairro = bairro;
+		Cep = cep;
+		Complemento = complemento;
+		Estado = estado;
+		NomeRua = nomeRua;
+		Cidade = cidade;
+	}
+	
+	
+	//Metodos:
+	
+
+	
+}

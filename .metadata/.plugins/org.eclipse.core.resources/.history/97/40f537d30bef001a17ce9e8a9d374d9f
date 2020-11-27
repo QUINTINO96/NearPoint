@@ -1,0 +1,5 @@
+package com.nearpoint.controller;
+
+public @interface Valid {
+
+}

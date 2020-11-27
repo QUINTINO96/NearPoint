@@ -11,23 +11,23 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getEmpregado(id: number): Observable<any> {
+  getPost(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createEmpregado(empregado: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, empregado);
+  createPost(post: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, post);
   }
 
-  updateEmpregado(id: number, value: any): Observable<Object> {
+  updatePost(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deleteEmpregado(id: number): Observable<any> {
+  deletePost(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getEmpregadosList(): Observable<any> {
+  getPostList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
 }

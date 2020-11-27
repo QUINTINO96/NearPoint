@@ -15,6 +15,9 @@ import { PainelPadraoComponent } from './painel-padrao/painel-padrao.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CriarPostComponent } from './criar-post/criar-post.component';
+import { FormsModule } from '@angular/forms'
+
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -37,6 +40,8 @@ import { CriarPostComponent } from './criar-post/criar-post.component';
     AppRoutingModule,
     MatTabsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
