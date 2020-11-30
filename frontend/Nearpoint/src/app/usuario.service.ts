@@ -36,7 +36,7 @@ export class UsuarioService {
 
   // salva um Usuarioro
   saveUsuario(Usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.url, JSON.stringify(Usuario), this.httpOptions)
+    return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/cadastro', JSON.stringify(Usuario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

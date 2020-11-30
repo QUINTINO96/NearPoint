@@ -13,13 +13,16 @@
                 <h1 class="titulo">Criar Post</h1>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form (ngSubmit)="f.form.valid && savePost(f)" name="f" #f="ngForm" novalidate>
                     <label><b>Título</b></label>
                     <hr>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <input type="text" class="form-control" placeholder="Título">
-                      </div>
+                        <input [(ngModel)]="post.titulo" type="text" class="form-control" placeholder="titulo"  #titulo = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }">
+                        <div *ngIf="f.submitted && titulo.invalid" class="invalid-feedback">
+                            <div *ngIf="titulo.errors.required">Titulo é obrigatório</div>
+                        </div>
+                    </div>
                     </div>
                     <hr>
                     <label><b>Imagem</b></label>  
@@ -51,12 +54,15 @@
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <textarea rows="4" class="form-control"></textarea>
+                            <textarea [(ngModel)]="post.descricao" name="descricao" rows="4" class="form-control"  #descricao = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }"></textarea>
+                            <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
+                                <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
+                            </div>
                         </div>
                     </div>
                     <hr>     
                     <div class="centro">
-                        <a class="btn btn-personalizado" href="/login">Criar</a>
+                        <button type="submit"  class="btn btn-personalizado">Criar</button>
                     </div>
                     
                   </form>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
-import { NgForm }  from '@angular/forms'
+import { FormGroup, NgForm }  from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-painel-padrao',
@@ -10,18 +11,21 @@ import { NgForm }  from '@angular/forms'
 })
 export class PainelPadraoComponent implements OnInit {
 
-  usuario = {} as Usuario
-  usuarios: Usuario[]
-  constructor(private usuarioService: UsuarioService) { }
+  id: number;
+  usuario: Usuario;
+  
+  constructor(private route: ActivatedRoute, private router: Router, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-  this.getUsuarios()
-  }
+    this.usuario = new Usuario();
 
-  getUsuarios() {
-    this.usuarioService.getUsuarios().subscribe((usuarios: Usuario[]) => {
-      this.usuarios = usuarios;
-    });
+    this.id = this.route.snapshot.params['id'];
+
+    this.usuarioService.getUsuarioById(this.id)
+      .subscribe(data => {
+        console.log(data)
+        this.usuario = data;
+      }, error => console.log(error));
   }
 
 }

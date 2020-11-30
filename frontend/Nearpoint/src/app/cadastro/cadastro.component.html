@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Atualizar</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
@@ -14,31 +14,46 @@
                 <h1 class="titulo">Cadastro</h1>
             </div>
             <div class="card-body">
-                <form action="" (ngSubmit)="saveUsuario(f)" #f="ngForm" novalidate>
+                <form (ngSubmit)="f.form.valid && saveUsuario(f)" name="f1" #f="ngForm" novalidate>
                     <label><b>Dados Pessoais</b></label>
                     <hr>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label>Nome</label>
-                        <input [(ngModel)]="usuario.nome" type="text" class="form-control" placeholder="Nome">
-                      </div>
+                        <input [(ngModel)]="usuario.nome" name="nome" type="text" class="form-control" placeholder="Nome" #nome = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }">
+                        <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                            <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                        </div>
+                    </div>
                       <div class="form-group col-md-6">
                         <label>Sobrenome</label>
-                        <input [(ngModel)]="usuario.sobrenome" type="text" class="form-control" placeholder="Sobrenome">
-                      </div>
+                        <input [(ngModel)]="usuario.sobrenome" name="sobrenome" type="text" class="form-control" placeholder="Sobrenome" #sobrenome = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && sobrenome.invalid }">
+                        <div *ngIf="f.submitted && sobrenome.invalid" class="invalid-feedback">
+                            <div *ngIf="sobrenome.errors.required">Sobrenome é obrigatório</div>
+                        </div>
+                    </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>CPF</label>
-                            <input [(ngModel)]="usuario.cpf" type="number" class="form-control" placeholder="CPF">
+                            <input [(ngModel)]="usuario.cpf" name="cpf" type="number" class="form-control" placeholder="CPF" #cpf = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }">
+                            <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                                <div *ngIf="cpf.errors.required">CPF é obrigatório</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Data de Nascimento</label>
-                            <input type="date" class="form-control">
+                            <input [(ngModel)]="usuario.dataNascimento" name="dataNascimento" type="date" class="form-control" #dataNascimento = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && dataNascimento.invalid }">
+                            <div *ngIf="f.submitted && dataNascimento.invalid" class="invalid-feedback">
+                                <div *ngIf="dataNascimento.errors.required">Data de Nascimento é obrigatório</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Telefone</label>
-                            <input type="number" class="form-control" placeholder="Telefone">
+                            <input [(ngModel)]="usuario.telefone" name="telefone" type="number" class="form-control" placeholder="Telefone" #telefone = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && telefone.invalid }">
+                            <div *ngIf="f.submitted && telefone.invalid" class="invalid-feedback">
+                                <div *ngIf="telefone.errors.required">Telefone é obrigatório</div>
+                            </div>
                         </div>
                     </div>
                     <hr>
@@ -48,25 +63,25 @@
                         
                         <div class="form-group col-md-4">
                             <label>Rua</label>
-                            <input type="text" class="form-control" placeholder="Rua">
+                            <input [(ngModel)]="endereco.rua" type="text" name="rua" class="form-control" placeholder="Rua" #rua="ngModel">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Bairro</label>
-                            <input type="text" class="form-control" placeholder="Bairro">
+                            <input [(ngModel)]="endereco.bairro" type="text" name="bairro" class="form-control" placeholder="Bairro" #bairro="ngModel">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Complemento</label>
-                            <input type="text" class="form-control" placeholder="Complemento">
+                            <input  [(ngModel)]="endereco.complemento" type="text" name="complemento" class="form-control" placeholder="Complemento" #complemento="ngModel">
                         </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label>Cidade</label>
-                        <input type="text" class="form-control">
+                        <input  [(ngModel)]="endereco.cidade" type="text" name="cidade" class="form-control" #cidade="ngModel">
                       </div>
                       <div class="form-group col-md-4">
                         <label>Estado</label>
-                        <select class="form-control">
+                        <select  [(ngModel)]="endereco.estado"  name="estado" class="form-control" #estado="ngModel">
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -99,7 +114,7 @@
                       </div>
                       <div class="form-group col-md-2">
                         <label>CEP</label>
-                        <input type="number" class="form-control">
+                        <input  [(ngModel)]="endereco.cep" type="number" name="cep" class="form-control" #cep="ngModel">
                       </div>
                     </div>
                     <hr>
@@ -108,15 +123,24 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label>Email</label>
-                            <input [(ngModel)]="usuario.email" type="email" class="form-control" placeholder="Email">
+                            <input [(ngModel)]="usuario.email" name="email" type="email" class="form-control" placeholder="Email" #email = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && email.invalid }">
+                            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Email é obrigatório</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Senha</label>
-                            <input type="password" class="form-control" placeholder="Senha">
+                            <input [(ngModel)]="usuario.senha1" name="senha1" type="password" class="form-control" placeholder="Senha" #senha1 = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && senha1.invalid }">
+                            <div *ngIf="f.submitted && senha1.invalid" class="invalid-feedback">
+                                <div *ngIf="senha1.errors.required">Senha é obrigatório</div>
+                            </div>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Confirme a Senha</label>
-                            <input type="password" class="form-control" placeholder="Confirme a Senha">
+                            <input [(ngModel)]="usuario.senha2" type="password" class="form-control" name="senha2" placeholder="Confirme a Senha" #senha2="ngModel" >
+                            <!-- <div *ngIf="cSenha!=senha" class="invalid-feedback">
+                                <div>Senhas estão diferentes</div>
+                            </div> -->
                         </div>
                     </div>
                     <hr>
@@ -125,13 +149,13 @@
                     <div class="col-12 d-flex">
                         <div class="col-4" style="align-self: center;">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios1" value="0" checked>
                                 <label class="form-check-label" for="exampleRadios1">
                                   Visualizador
                                 </label>
                             </div>   
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios2" value="1">
                                 <label class="form-check-label" for="exampleRadios2">
                                   Anunciante
                                 </label>
@@ -163,7 +187,7 @@
                         </div>
                       </div>        
                     <div class="centro">
-                        <button type="submit" class="btn btn-personalizado">Cadastrar</button>
+                        <button type="submit"  class="btn btn-personalizado">Cadastrar</button>
                     </div>
                     
                   </form>
@@ -171,8 +195,6 @@
           </div>
        
     </div>
-    
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

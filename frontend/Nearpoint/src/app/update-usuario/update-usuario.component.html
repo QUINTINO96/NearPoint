@@ -1,1 +1,226 @@
-<p>update-usuario works!</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+   
+    <div class="container">
+        <div class="card">
+            <div class="card-header centro">
+                <h1 class="titulo">Cadastro</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="f.form.valid && saveUsuario()" name="f2" #f="ngForm" novalidate>
+                    <label><b>Dados Pessoais</b></label>
+                    <hr>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Nome</label>
+                        <input [(ngModel)]="usuario.nome" name="nome" type="text" class="form-control" placeholder="Nome" #nome = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }">
+                        <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+                            <div *ngIf="nome.errors.required">Nome é obrigatório</div>
+                        </div>
+                    </div>
+                      <div class="form-group col-md-6">
+                        <label>Sobrenome</label>
+                        <input [(ngModel)]="usuario.sobrenome" name="sobrenome" type="text" class="form-control" placeholder="Sobrenome" #sobrenome = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && sobrenome.invalid }">
+                        <div *ngIf="f.submitted && sobrenome.invalid" class="invalid-feedback">
+                            <div *ngIf="sobrenome.errors.required">Sobrenome é obrigatório</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>CPF</label>
+                            <input [(ngModel)]="usuario.cpf" name="cpf" type="number" class="form-control" placeholder="CPF" #cpf = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }">
+                            <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                                <div *ngIf="cpf.errors.required">CPF é obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Data de Nascimento</label>
+                            <input [(ngModel)]="usuario.dataNascimento" name="dataNascimento" type="date" class="form-control" #dataNascimento = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && dataNascimento.invalid }">
+                            <div *ngIf="f.submitted && dataNascimento.invalid" class="invalid-feedback">
+                                <div *ngIf="dataNascimento.errors.required">Data de Nascimento é obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Telefone</label>
+                            <input [(ngModel)]="usuario.telefone" name="telefone" type="number" class="form-control" placeholder="Telefone" #telefone = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && telefone.invalid }">
+                            <div *ngIf="f.submitted && telefone.invalid" class="invalid-feedback">
+                                <div *ngIf="telefone.errors.required">Telefone é obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- <label><b>Endereço</b></label>  
+                    <hr>
+                    <div class="form-row">
+                        
+                        <div class="form-group col-md-4">
+                            <label>Rua</label>
+                            <input [(ngModel)]="endereco.rua" type="text" name="rua" class="form-control" placeholder="Rua" #rua="ngModel">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Bairro</label>
+                            <input [(ngModel)]="endereco.bairro" type="text" name="bairro" class="form-control" placeholder="Bairro" #bairro="ngModel">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Complemento</label>
+                            <input  [(ngModel)]="endereco.complemento" type="text" name="complemento" class="form-control" placeholder="Complemento" #complemento="ngModel">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label>Cidade</label>
+                        <input  [(ngModel)]="endereco.cidade" type="text" name="cidade" class="form-control" #cidade="ngModel">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Estado</label>
+                        <select  [(ngModel)]="endereco.estado"  name="estado" class="form-control" #estado="ngModel">
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                            <option value="EX">Estrangeiro</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label>CEP</label>
+                        <input  [(ngModel)]="endereco.cep" type="number" name="cep" class="form-control" #cep="ngModel">
+                      </div>
+                    </div> -->
+                    <hr>
+                    <label><b>Dados de Login</b></label>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>Email</label>
+                            <input [(ngModel)]="usuario.email" name="email" type="email" class="form-control" placeholder="Email" #email = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && email.invalid }">
+                            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors.required">Email é obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Senha</label>
+                            <input [(ngModel)]="usuario.senha1" name="senha1" type="password" class="form-control" placeholder="Senha" #senha1 = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && senha1.invalid }">
+                            <div *ngIf="f.submitted && senha1.invalid" class="invalid-feedback">
+                                <div *ngIf="senha1.errors.required">Senha é obrigatório</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Confirme a Senha</label>
+                            <input [(ngModel)]="usuario.senha2" type="password" class="form-control" name="senha2" placeholder="Confirme a Senha" #senha2="ngModel" >
+                            <!-- <div *ngIf="cSenha!=senha" class="invalid-feedback">
+                                <div>Senhas estão diferentes</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <hr>
+                    <label><b>Tipo de Usuário</b></label>
+                    <hr>
+                    <div class="col-12 d-flex">
+                        <div class="col-4" style="align-self: center;">
+                            <div class="form-check">
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios1" value="0" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Visualizador
+                                </label>
+                            </div>   
+                            <div class="form-check">
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios2" value="1">
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Anunciante
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-8 d-flex">
+                            <div class="col-4" style="align-self: center;">
+                                <label>Escolha sua imagem:</label>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <!-- <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div> -->
+                                
+                                <div class="personal-image">
+                                    <label class="label">
+                                      <input type="file" />
+                                      <figure class="personal-figure">
+                                        <img src="https://svgsilh.com/svg_v2/2098873.svg" class="personal-avatar" alt="avatar">
+                                        <figcaption class="personal-figcaption">
+                                          <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+                                        </figcaption>
+                                      </figure>
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                      </div>        
+                    <div class="centro">
+                        <button type="submit" value="Validar" class="btn btn-personalizado">Cadastrar</button>
+                    </div>
+                    
+                  </form>
+            </div>
+          </div>
+       
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
+    <!-- <div class="container">
+        <div class="content first-content">
+            <div style="width: 100%;">
+                <h2 class="title title-second" style="text-align: center;">Cadastro</h2>
+                <form class="form">
+                    <div style="display: flex;">
+                        <div class="">
+                            <label class="label-input" for="">
+                                <input type="text" placeholder="Nome" required>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="label-input" for="">
+                                <input type="text" placeholder="Sobrenome" required>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>            
+                
+        </div>
+        </div> -->

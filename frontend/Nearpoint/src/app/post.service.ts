@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
+import { Post } from './post'
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,11 @@ export class PostService {
   private baseUrl = 'http://localhost:8080/springboot-crud-rest/api/v1/posts';
 
   constructor(private http: HttpClient) { }
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
+
 
   getPost(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
@@ -27,7 +34,7 @@ export class PostService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getPostList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+  getPostList(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}`);
   }
 }

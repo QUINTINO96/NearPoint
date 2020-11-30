@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post.service'
+import { Post } from '../post'
+import { FormGroup, NgForm }  from '@angular/forms'
 
 @Component({
   selector: 'app-criar-post',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CriarPostComponent implements OnInit {
 
-  constructor() { }
+  post = {} as Post
+  posts: Post[]
+
+  constructor(private postService : PostService) { }
 
   ngOnInit(): void {
+    this.getPosts()
+  }
+
+  savePost(form: NgForm) {  
+  
+      this.postService.createPost(this.post).subscribe(() => { });
+    
+  }
+
+  getPosts() {
+    this.postService.getPostList().subscribe((Posts: Post[]) => {
+      this.posts = Posts;
+    });
   }
 
 }

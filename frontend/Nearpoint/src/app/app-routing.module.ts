@@ -4,6 +4,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { CriarPostComponent } from './criar-post/criar-post.component';
 import { LoginComponent } from './login/login.component';
 import { PainelPadraoComponent } from './painel-padrao/painel-padrao.component';
+import { UpdateUsuarioComponent } from './update-usuario/update-usuario.component'
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login',component: LoginComponent},
   { path: 'anuncio',component: PainelPadraoComponent},
-  { path: 'painel',component: PainelPadraoComponent},
+  { path: 'painel/:id',component: PainelPadraoComponent},
+  { path: 'update-usuario/:id',component: UpdateUsuarioComponent},
   { path: 'criar',component: CriarPostComponent},
 ];
 

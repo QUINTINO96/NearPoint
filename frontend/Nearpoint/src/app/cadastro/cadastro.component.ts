@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
-import { NgForm }  from '@angular/forms'
+import { Endereco } from '../endereco'
+import { FormGroup, NgForm }  from '@angular/forms'
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -11,6 +13,7 @@ export class CadastroComponent implements OnInit {
 
   usuario = {} as Usuario
   usuarios: Usuario[]
+  endereco = {} as Endereco
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
@@ -29,7 +32,7 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  // Chama o serviço para obtém todos os Usuarioros
+  // Chama o serviço para obtém todos os Usuarios
   getUsuarios() {
     this.usuarioService.getUsuarios().subscribe((Usuarios: Usuario[]) => {
       this.usuarios = Usuarios;
@@ -54,9 +57,6 @@ export class CadastroComponent implements OnInit {
     form.resetForm();
     this.usuario = {} as Usuario;
   }
-
-  
-
 
 }
   
