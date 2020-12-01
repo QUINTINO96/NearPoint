@@ -18,7 +18,7 @@
                     <hr>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <input [(ngModel)]="post.titulo" type="text" class="form-control" placeholder="titulo"  #titulo = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }">
+                        <input [(ngModel)]="post.titulo" type="text" name="titulo" class="form-control" placeholder="titulo"  #titulo = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }">
                         <div *ngIf="f.submitted && titulo.invalid" class="invalid-feedback">
                             <div *ngIf="titulo.errors.required">Titulo é obrigatório</div>
                         </div>
@@ -54,7 +54,8 @@
                     <hr>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <textarea [(ngModel)]="post.descricao" name="descricao" rows="4" class="form-control"  #descricao = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }"></textarea>
+                            <input [(ngModel)]="post.descricao" name="descricao" rows="4" class="form-control"  #descricao = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }">
+                           
                             <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
                                 <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
                             </div>

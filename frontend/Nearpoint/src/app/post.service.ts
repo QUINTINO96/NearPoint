@@ -22,8 +22,15 @@ export class PostService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createPost(post: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, post);
+  // createPost(post: Object): Observable<Object> {
+  //   return this.http.post(`${this.baseUrl}`, post);
+  // }
+
+  createPost(Post: Post): Observable<Post> {
+    return this.http.post<Post>('http://localhost:8080/springboot-crud-rest/api/v1/posts', JSON.stringify(Post), this.httpOptions)
+      .pipe(
+        retry(2),
+      )
   }
 
   updatePost(id: number, value: any): Observable<Object> {
