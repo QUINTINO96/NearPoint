@@ -165,14 +165,32 @@
                             <div class="col-4" style="align-self: center;">
                                 <label>Escolha sua imagem:</label>
                             </div>
+                            {{imageError}}
+                                <div class="custom-file fileInputProfileWrap">
+                                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile">
+                                    <div class="img-space">
+
+                                        <ng-container *ngIf="isImageSaved; else elseTemplate">
+                                            <img [src]="cardImageBase64" />
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+
+                                            <img src="https://svgsilh.com/svg_v2/2098873.svg" class="img-responsive">
+                                        </ng-template>
+
+                                    </div>
+
+                                </div>
                             
-                            <div class="form-group col-md-8">
-                                <!-- <div class="custom-file">
+                            <a class="btn btn-danger" (click)="removeImage()" *ngIf="isImageSaved">Remove</a>
+                            
+                            <!-- <div class="form-group col-md-8">
+                                <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="customFile">
                                     <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div> -->
                                 
-                                <div class="personal-image">
+                                <!-- <div class="personal-image">
                                     <label class="label">
                                       <input type="file" />
                                       <figure class="personal-figure">
@@ -183,7 +201,7 @@
                                       </figure>
                                     </label>
                                   </div>
-                            </div>
+                            </div> --> 
                         </div>
                       </div>        
                     <div class="centro">
