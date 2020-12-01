@@ -24,7 +24,7 @@ public class Post {
 	private long id;
 	private byte[] fotoanuncio;
 	private String titulo;
-	private String descrição;
+	private String descricao;
 	
 	
 	
@@ -34,12 +34,12 @@ public class Post {
 	
 	
 
-	public Post(long id, byte[] fotoanuncio, String titulo, String descrição) {
+	public Post(long id, byte[] fotoanuncio, String titulo, String descricao) {
 		super();
 		this.id = id;
 		this.fotoanuncio = fotoanuncio;
 		this.titulo = titulo;
-		this.descrição = descrição;
+		this.descricao = descricao;
 	}
 
 
@@ -84,15 +84,17 @@ public class Post {
 
 
 
+
+
 	@Column(name = "descricao", nullable = false)
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
 
 
 
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 
@@ -100,7 +102,7 @@ public class Post {
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", fotoanuncio=" + Arrays.toString(fotoanuncio) + ", titulo=" + titulo
-				+ ", descrição=" + descrição + "]";
+				+ ", descricao=" + descricao + "]";
 	}
 	
 	

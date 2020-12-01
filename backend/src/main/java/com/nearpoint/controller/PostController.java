@@ -80,7 +80,7 @@ public class PostController {
 				.orElseThrow(() -> new ResourceNotFoundException("Post não encontrado para este Id :: " + postId));
 
 		post.setTitulo(postDetails.getTitulo());
-		post.setDescrição(postDetails.getDescrição());
+		post.setDescricao(postDetails.getDescricao());
 		post.setFotoanuncio(postDetails.getFotoanuncio());
 		final Post updatedPost = postService.updatePost(postDetails);
 		return ResponseEntity.ok(updatedPost);
@@ -103,7 +103,7 @@ public class PostController {
 	public PostDTO convertToDto(Post post) {
 		PostDTO postDTO = modelMapper.map(post, PostDTO.class);
 		postDTO.setTitulo(post.getTitulo());
-		postDTO.setDescrição(post.getDescrição());
+		postDTO.setDescricao(post.getDescricao());
 		postDTO.setFotoanuncio(post.getFotoanuncio());
 		return postDTO;
 	}

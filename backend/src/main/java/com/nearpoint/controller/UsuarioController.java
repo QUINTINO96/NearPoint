@@ -77,12 +77,6 @@ public class UsuarioController {
 	}
 	
 	
-	/*@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/empresas/{id}")
-	public Empresa addEmpresas(@Validated @RequestBody Empresa empresa) {
-		return empresaRepository.save(empresa);
-	}*/
-	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/usuarios/{id}")
 	public ResponseEntity<Usuario> updateUsuario(@PathVariable(value = "id") Long usuarioId,
