@@ -1,1 +1,80 @@
-<p>update-post works!</p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header centro">
+                <h1 class="titulo">Editar Post</h1>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="f.form.valid && savePost()" name="f3" #f="ngForm" novalidate>
+                    <label><b>Título</b></label>
+                    <hr>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <input [(ngModel)]="post.titulo" type="text" name="titulo" class="form-control" placeholder="titulo"  #titulo = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }">
+                        <div *ngIf="f.submitted && titulo.invalid" class="invalid-feedback">
+                            <div *ngIf="titulo.errors.required">Titulo é obrigatório</div>
+                        </div>
+                    </div>
+                    </div>
+                    <hr>
+                    <label><b>Imagem</b></label>  
+                    <hr>
+                    <div class="form-row">
+                        <div class="col-8 d-flex">
+                            <div class="col-4" style="align-self: center;">
+                                <label>Sua imagem:</label>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                
+                                <div class="personal-image">
+                                    <label class="label">
+                                      <input type="file" disabled />
+                                      <figure class="personal-figure">
+                                        <img src="https://svgsilh.com/svg_v2/2098873.svg" class="personal-avatar" alt="avatar">
+                                        <figcaption class="personal-figcaption">
+                                          <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
+                                        </figcaption>
+                                      </figure>
+                                    </label>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <label><b>Descrição</b></label>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input [(ngModel)]="post.descricao" name="descricao" rows="4" class="form-control"  #descricao = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }">
+                           
+                            <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
+                                <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>     
+                    <div class="centro">
+                        <button type="submit"  class="btn btn-personalizado">Editar</button>
+                    </div>
+                    
+                  </form>
+            </div>
+          </div>
+       
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ export class Usuario {
     fotoPerfil:ImageBitmap;
     endereco:Endereco; //olhar depois como declarar um objeto
     dataNascimento:string; //olhar depois como declarar data
-    senha1:string;
+    senha:string;
     senha2:string;
     //olhar como declarar o post e o list de post
 }

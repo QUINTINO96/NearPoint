@@ -131,9 +131,9 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label>Senha</label>
-                            <input [(ngModel)]="usuario.senha1" name="senha1" type="password" class="form-control" placeholder="Senha" #senha1 = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && senha1.invalid }">
-                            <div *ngIf="f.submitted && senha1.invalid" class="invalid-feedback">
-                                <div *ngIf="senha1.errors.required">Senha é obrigatório</div>
+                            <input [(ngModel)]="usuario.senha" name="senha" type="password" class="form-control" placeholder="Senha" #senha = "ngModel" required [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }">
+                            <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
+                                <div *ngIf="senha.errors.required">Senha é obrigatório</div>
                             </div>
                         </div>
                         <div class="form-group col-md-4">
@@ -150,14 +150,14 @@
                     <div class="col-12 d-flex">
                         <div class="col-4" style="align-self: center;">
                             <div class="form-check">
-                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios1" value="0" checked>
-                                <label class="form-check-label" for="exampleRadios1">
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario"  value="0" checked #tipoUsuario = "ngModel">
+                                <label class="form-check-label">
                                   Visualizador
                                 </label>
                             </div>   
                             <div class="form-check">
-                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario" id="exampleRadios2" value="1">
-                                <label class="form-check-label" for="exampleRadios2">
+                                <input [(ngModel)]="usuario.tipoUsuario" class="form-check-input" type="radio" name="tipoUsuario"  value="1" #tipoUsuario = "ngModel">
+                                <label class="form-check-label">
                                   Anunciante
                                 </label>
                             </div>

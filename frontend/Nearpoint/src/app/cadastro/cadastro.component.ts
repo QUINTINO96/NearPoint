@@ -17,9 +17,15 @@ export class CadastroComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
+  senha: string;
+  senha2:string;
+  mensagem: string;
+  confirmaSenha: number;
+
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
+  this.confirmaSenha=0
   this.getUsuarios()
   }
 
@@ -33,6 +39,7 @@ export class CadastroComponent implements OnInit {
         this.cleanForm(form);
       });
     }
+    console.log(this.usuario)
   }
 
   // Chama o serviço para obtém todos os Usuarios
@@ -115,6 +122,19 @@ export class CadastroComponent implements OnInit {
 removeImage() {
     this.cardImageBase64 = null;
     this.isImageSaved = false;
+}
+
+onKeyUpEvent(event: any){
+  if(this.usuario.senha!=this.usuario.senha2){
+    this.mensagem="As senhas não conferem"
+    this.confirmaSenha=0
+  }else{
+    this.mensagem="As senhas conferem"
+    this.confirmaSenha=1
+  }
+  console.log(this.usuario.senha2);
+  console.log(this.usuario.senha)
+
 }
 
 }

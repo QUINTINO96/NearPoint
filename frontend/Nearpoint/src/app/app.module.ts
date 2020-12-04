@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms'
 
 import {HttpClientModule} from '@angular/common/http'
 import { UpdateUsuarioComponent } from './update-usuario/update-usuario.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { UpdateUsuarioComponent } from './update-usuario/update-usuario.componen
     CadastroComponent,
     PainelPadraoComponent,
     CriarPostComponent,
-    UpdateUsuarioComponent
+    UpdateUsuarioComponent,
+ 
 
     
   ],
@@ -44,7 +46,8 @@ import { UpdateUsuarioComponent } from './update-usuario/update-usuario.componen
     MatTabsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
