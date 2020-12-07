@@ -1,7 +1,8 @@
+import { getTestBed } from '@angular/core/testing';
+import { Endereco } from './../endereco';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
-import { Endereco } from '../endereco'
 import { FormGroup, NgForm }  from '@angular/forms'
 
 @Component({
@@ -22,11 +23,16 @@ export class CadastroComponent implements OnInit {
   mensagem: string;
   confirmaSenha: number;
 
+
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
   this.confirmaSenha=0
-  this.getUsuarios()
+  this.saveUsuario
+  
+
+  
+ 
   }
 
   saveUsuario(form: NgForm) {
@@ -61,12 +67,13 @@ export class CadastroComponent implements OnInit {
     this.usuario = { ...Usuario };
   }
 
+ 
   // limpa o formulario
   cleanForm(form: NgForm) {
-    this.getUsuarios();
+    this.getUsuarios;
     form.resetForm();
     this.usuario = {} as Usuario;
-  }
+  } 
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
@@ -110,12 +117,14 @@ export class CadastroComponent implements OnInit {
                     const imgBase64Path = e.target.result;
                     this.cardImageBase64 = imgBase64Path;
                     this.isImageSaved = true;
+
                     // this.previewImagePath = imgBase64Path;
                 }
             };
         };
 
         reader.readAsDataURL(fileInput.target.files[0]);
+        
     }
 }
 

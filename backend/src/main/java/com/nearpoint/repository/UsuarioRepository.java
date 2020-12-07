@@ -14,11 +14,9 @@ import com.nearpoint.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-	@Modifying@Query(value = "select emp.id, emp.nome_empresa, emp.cnpj_empresa, emp.endereco, emp.date_fundacao,\n" + 
-			"emp.telefone, e.nome_completo, emp.empregado_id from empresas as emp\n" + 
-			"inner join posts as e on e.id = emp.post_id",
-			nativeQuery = true )
-	List<Usuario> findAllInnerJoin();
+	@Modifying
+	@Query(value = "SELECT id,senha,email  from usuarios",nativeQuery = true)	
+	List<Usuario> Validade();
 
 }
 

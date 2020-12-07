@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nearpoint.beans.PostDTO;
@@ -32,11 +33,13 @@ import com.nearpoint.repository.UsuarioRepository;
 import com.nearpoint.service.UsuarioService;
 
 
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/usuarios")
+
 public class UsuarioController {
+	
+	
 	
 	@Autowired
     private ModelMapper modelMapper;
@@ -55,9 +58,9 @@ public class UsuarioController {
 	}
 
     @CrossOrigin(origins = "http://localhost:4200")
-	@GetMapping("/usuarios/inner")
-	public List<Usuario> findAllusuarios(){
-		return usuarioRepository.findAllInnerJoin();
+	@GetMapping("/login/validade")
+	public List<Usuario> getValidade(){
+		return usuarioRepository.Validade();
 		
 	}
 
@@ -70,10 +73,22 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(usuario);
 	}
 	
+	
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PostMapping("/cadastro")
-	public Usuario addUsuario(@Validated @RequestBody Usuario usuario) {
+	@PostMapping("/cadastro")	
+	public Usuario addUsuario(@Valid @RequestBody Usuario usuario) {
 		return usuarioRepository.save(usuario);
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PutMapping("/cadastro/{id}")
+	public ResponseEntity<Usuario> updateEndereco(@PathVariable(value = "id") Long usuarioId,
+			@Validated @RequestBody Usuario usuarioDetalhes) throws ResourceNotFoundException{
+		Usuario usuario = usuarioRepository.findById(usuarioId)
+				.orElseThrow(() -> new ResourceNotFoundException("Não foi possível atualizar :: " +usuarioId + ":: não localizado"));
+		
+		usuario.setEnderecoUsu(usuario.getEnderecoUsu());
+		final Usuario upUsuario = usuarioRepository.save(usuario);
+		return ResponseEntity.ok(upUsuario);
 	}
 	
 	

@@ -10,7 +10,7 @@ import { Usuario } from './usuario';
 
 export class UsuarioService {
 
-  private url = 'http://localhost:8080/springboot-crud-rest/api/v1/usuarios';
+  private url = 'http://localhost:8080/springboot-crud-rest/api/v1/usuarios/';
 
   constructor(private http: HttpClient) { }
 
@@ -36,7 +36,7 @@ export class UsuarioService {
 
   // salva um Usuarioro
   saveUsuario(Usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/cadastro', JSON.stringify(Usuario), this.httpOptions)
+    return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/usuarios/cadastro', JSON.stringify(Usuario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

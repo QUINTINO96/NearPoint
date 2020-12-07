@@ -18,7 +18,7 @@ public class UsuarioDTO implements Serializable{
 	private String cpf;
 	private Tipo tipoUsuario;
 	private String sobrenome;
-	private byte[] fotoPerfil;
+	private String[] fotoPerfil;
 	private Endereco enderecoUsu;
 	private String dataNascimento;
 	private String senha;
@@ -29,7 +29,7 @@ public class UsuarioDTO implements Serializable{
 	}
 
 	public UsuarioDTO(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario,
-			String sobrenome,byte[]fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
+			String sobrenome,String[]fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
 			List<Post> listPosts) {
 		super();
 		this.id = id;
@@ -102,11 +102,11 @@ public class UsuarioDTO implements Serializable{
 		this.sobrenome = sobrenome;
 	}
 
-	public byte[] getFotoPerfil() {
+	public String[] getFotoPerfil() {
 		return fotoPerfil;
 	}
 
-	public void setFotoPerfil(byte[] fotoPerfil) {
+	public void setFotoPerfil(String[] fotoPerfil) {
 		this.fotoPerfil = fotoPerfil;
 	}
 

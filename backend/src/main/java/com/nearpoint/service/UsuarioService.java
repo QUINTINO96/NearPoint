@@ -20,6 +20,6 @@ public interface UsuarioService {
 
 	void deleteUsuario(Usuario usuario);
     
-    List<Usuario> getAllInnerJoin();
+    List<Usuario> getValidade();
 
 }

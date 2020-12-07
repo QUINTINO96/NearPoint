@@ -32,8 +32,22 @@
                             <div class="col-4" style="align-self: center;">
                                 <label>Escolha sua imagem:</label>
                             </div>
+                            {{imageError}}
+                                <div class="custom-file fileInputProfileWrap">
+                                    <input  [(ngModel)]="post.fotoanuncio" type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" name="fotoanuncio" #fotoanuncio="ngModel" >
+                                    <div class="img-space">
+
+                                        <ng-container *ngIf="isImageSaved; else elseTemplate">
+                                            <img [src]="cardImageBase64" />
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+
+                                            <img src="https://svgsilh.com/svg_v2/2098873.svg" class="img-responsive">
+                                        </ng-template>
+                                    </div>
+                                </div>
                             
-                            <div class="form-group col-md-8">
+                            <!-- <div class="form-group col-md-8">
                                 
                                 <div class="personal-image">
                                     <label class="label">
@@ -46,7 +60,7 @@
                                       </figure>
                                     </label>
                                   </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <hr>

@@ -52,9 +52,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 		this.usuarioRepository.delete(usuario);
 	}
 
-    	@Override
-	public List<Usuario> getAllInnerJoin() {
-		return this.usuarioRepository.findAllInnerJoin();
+    @Override
+	public List<Usuario> getValidade() {
+		return this.usuarioRepository.Validade();
 	}
 	
 }

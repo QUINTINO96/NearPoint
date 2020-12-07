@@ -1,3 +1,7 @@
+import { Injectable } from '@angular/core';
+@Injectable({
+  providedIn: 'root'
+})
 export class Endereco{
   rua:string;
   complemento:string;
@@ -5,4 +9,5 @@ export class Endereco{
   cep:string;
   bairro:string;
   cidade:string;
+
 }

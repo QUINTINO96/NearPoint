@@ -30,7 +30,7 @@ public class Usuario {
 	private String cpf;
 	private Tipo tipoUsuario;
 	private String sobrenome;
-	private byte[] fotoPerfil;
+	private String[] fotoPerfil;
 	private Endereco enderecoUsu;
 	private String dataNascimento;
 	private String senha;
@@ -40,9 +40,16 @@ public class Usuario {
 	public Usuario() {
 		
 	}
+	
+	public Usuario(long id,String email,String senha)
+	{
+		this.id = id;
+		this.email = email;
+		this.senha = senha;
+	}
 
 	public Usuario(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario, String sobrenome, 
-			byte[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
+			String[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -165,11 +172,11 @@ public class Usuario {
 	
 
 	@Column(name = "fotoPerfil", length = 1000)
-	public byte[] getFotoPerfil() {
+	public String[] getFotoPerfil() {
 		return fotoPerfil;
 	}
 
-	public void setFotoPerfil(byte[] fotoPerfil) {
+	public void setFotoPerfil(String[] fotoPerfil) {
 		this.fotoPerfil = fotoPerfil;
 	}
 
