@@ -60,7 +60,7 @@ public class UsuarioController {
     @CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/login/validade")
 	public List<Usuario> getValidade(){
-		return usuarioRepository.Validade();
+		return this.usuarioRepository.Validade();
 		
 	}
 
