@@ -1,10 +1,12 @@
 package com.nearpoint.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +20,9 @@ public class Endereco {
 	private String Cidade;
 	private String Estado;
 	private String CEP;
+	
+	 @OneToOne(cascade = CascadeType.ALL, mappedBy = "Usuario")
+	    private Usuario usuario;
 	
 	public Endereco() {
 		

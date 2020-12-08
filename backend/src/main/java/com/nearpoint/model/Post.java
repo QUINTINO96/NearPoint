@@ -3,6 +3,7 @@ package com.nearpoint.model;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,9 @@ public class Post {
 	private byte[] fotoanuncio;
 	private String titulo;
 	private String descricao;
+	
+	 @OneToOne(cascade = CascadeType.ALL, mappedBy = "Usuario")
+	    private Usuario usuario;
 	
 	
 	

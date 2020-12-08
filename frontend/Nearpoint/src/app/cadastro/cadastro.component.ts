@@ -22,6 +22,7 @@ export class CadastroComponent implements OnInit {
   senha2:string;
   mensagem: string;
   confirmaSenha: number;
+  previewImagePath: any;
 
 
   constructor(private usuarioService: UsuarioService) { }
@@ -90,7 +91,7 @@ export class CadastroComponent implements OnInit {
             return false;
         }
 
-        /* if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
+       /*  if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
             this.imageError = 'Only Images are allowed ( JPG | PNG )';
             return false;
         } */
@@ -118,12 +119,16 @@ export class CadastroComponent implements OnInit {
                     this.cardImageBase64 = imgBase64Path;
                     this.isImageSaved = true;
 
-                    // this.previewImagePath = imgBase64Path;
+                     this.previewImagePath = imgBase64Path;
                 }
             };
         };
 
         reader.readAsDataURL(fileInput.target.files[0]);
+       
+        console.log(this.usuario.fotoPerfil);
+        
+        
         
     }
 }

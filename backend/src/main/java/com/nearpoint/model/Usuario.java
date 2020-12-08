@@ -1,5 +1,8 @@
 package com.nearpoint.model;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class Usuario {
 	private String cpf;
 	private Tipo tipoUsuario;
 	private String sobrenome;
-	private String[] fotoPerfil;
+	private byte[] fotoPerfil;
 	private Endereco enderecoUsu;
 	private String dataNascimento;
 	private String senha;
@@ -49,7 +52,7 @@ public class Usuario {
 	}
 
 	public Usuario(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario, String sobrenome, 
-			String[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
+			byte[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -171,12 +174,14 @@ public class Usuario {
 
 	
 
-	@Column(name = "fotoPerfil", length = 1000)
-	public String[] getFotoPerfil() {
+	@Column(name = "fotoPerfil", length = 10000)
+	public byte[] getFotoPerfil() {
+		
 		return fotoPerfil;
 	}
 
-	public void setFotoPerfil(String[] fotoPerfil) {
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		
 		this.fotoPerfil = fotoPerfil;
 	}
 
