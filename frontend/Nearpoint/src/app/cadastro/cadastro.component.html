@@ -174,7 +174,7 @@
                             </div>
                             {{imageError}}
                                 <div class="custom-file fileInputProfileWrap">
-                                    <input  [(ngModel)]="usuario.fotoPerfil" type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" name="fotoPerfil" #fotoPerfil="ngModel" >
+                                    <input   type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" name="fotoPerfil"  >
                                     <div class="img-space">
 
                                         <ng-container *ngIf="isImageSaved; else elseTemplate">

@@ -91,7 +91,7 @@ export class CadastroComponent implements OnInit {
             return false;
         }
 
-       /*  if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
+       /*  if (!fileInput.target.files[0].types.includes(allowed_types)) {
             this.imageError = 'Only Images are allowed ( JPG | PNG )';
             return false;
         } */
@@ -125,6 +125,9 @@ export class CadastroComponent implements OnInit {
         };
 
         reader.readAsDataURL(fileInput.target.files[0]);
+
+        
+        this.usuario.fotoPerfil= btoa(this.usuario.fotoPerfil);
        
         console.log(this.usuario.fotoPerfil);
         

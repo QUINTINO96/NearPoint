@@ -27,7 +27,7 @@ export class UsuarioService {
 
   // Obtem um Usuarioro pelo id
   getUsuarioById(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(this.url + '/' + id)
+    return this.http.get<Usuario>(this.url + 'usuarios/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
