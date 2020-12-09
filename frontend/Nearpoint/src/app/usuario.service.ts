@@ -25,6 +25,13 @@ export class UsuarioService {
         catchError(this.handleError))
   }
 
+  getUsuariosLogin(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>('http://localhost:8080/springboot-crud-rest/api/v1/login/validade')
+      .pipe(
+        retry(2),
+        catchError(this.handleError))
+  }
+
   // Obtem um Usuarioro pelo id
   getUsuarioById(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(this.url + '/' + id)
@@ -36,7 +43,7 @@ export class UsuarioService {
 
   // salva um Usuarioro
   saveUsuario(Usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/usuarios/cadastro', JSON.stringify(Usuario), this.httpOptions)
+    return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/cadastro', JSON.stringify(Usuario), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

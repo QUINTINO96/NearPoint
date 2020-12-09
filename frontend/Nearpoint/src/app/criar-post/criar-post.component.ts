@@ -24,6 +24,7 @@ export class CriarPostComponent implements OnInit {
 
   savePost(form: NgForm) {
     if (this.post.id !== undefined) {
+
       this.postService.createPost(this.post).subscribe(() => {
 
       });

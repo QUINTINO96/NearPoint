@@ -5,11 +5,11 @@
                 <h2 class="title title-primary">Bem vindo de Volta!</h2>
                 <p class="description description-primary">Não tem conta?</p>
                 <p class="description description-primary">Se cadastre agora</p>
-                <a href="/cadastro"><button id="signin" class="btn btn-primary">Cadastrar</button></a>
+                <a href="/cadastro"><button id="signin" class="btn btn-second">Cadastrar</button></a>
             </div>    
             <div class="second-column">
                 <h2 class="title title-second">Nearpoint</h2>
-                <form class="form" (ngSubmit)="login()" name="f1" [formGroup]="form">
+                <form class="form" (ngSubmit)="validaLogin()" name="f1" [formGroup]="form">
                     
                     <label class="label-input">
                         <input formControlName="email" type="email" placeholder="Email" required>
@@ -21,7 +21,7 @@
                     
                     
                     <!-- <button class="btn btn-second">Entrar</button>         -->
-                    <button class="btn btn-success" type="submit"  [disabled]="!form.valid">Entrar</button> 
+                    <button class="btn btn-primary" type="submit" >Entrar</button> 
                         <p *ngIf='mensagem != ""' class="alert alert-primary mt-2">{{ mensagem }}</p>
                     
                 </form>

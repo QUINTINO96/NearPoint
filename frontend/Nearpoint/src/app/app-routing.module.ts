@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'anuncio',component: PainelPadraoComponent},
   { path: 'painel/:id',component: PainelPadraoComponent},
   { path: 'update-usuario/:id',component: UpdateUsuarioComponent},
-  { path: 'criar',component: CriarPostComponent},
+  { path: 'criar/:id',component: CriarPostComponent},
   { path: 'update-post/:id', component: UpdatePostComponent },
 ];
 

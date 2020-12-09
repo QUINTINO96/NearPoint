@@ -71,23 +71,24 @@ body {
     margin-top: 1rem;
 }
 .btn-primary {
-    background-color: transparent;
-    border: 1px solid #fff;
-    transition: background-color .5s;
-}
-.btn-primary:hover {
-    background-color: #fff;
-    color: #460C0C;
-}
-.btn-second {
     background-color: #460C0C;
     border: 1px solid #460C0C;
     transition: background-color .5s;
 }
-.btn-second:hover {
+.btn-primary:hover {
+    background-color: rgb(46, 12, 12);
+    color: #fff;
+}
+.btn-second {
     background-color: #fff;
     border: 1px solid #460C0C;
-    color: #460C0C;
+    transition: background-color .5s;
+    color: #2D2E2E;
+}
+.btn-second:hover {
+    background-color: rgb(55, 48, 48);
+    border: 1px solid #460C0C;
+    color: #fff;
 }
 .first-content {
     display: flex;
