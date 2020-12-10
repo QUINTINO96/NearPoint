@@ -32,8 +32,9 @@ export class UpdateUsuarioComponent implements OnInit {
     saveUsuario() {
       this.usuarioService.updateUsuario(this.usuario).subscribe(() => {});
   }
-
-
+  update(){
+    this.router.navigate(['/painel/'+this.id]);
   }
+}
 
   

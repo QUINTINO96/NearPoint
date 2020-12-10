@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service'
 import { Post } from '../post'
 import { FormGroup, NgForm }  from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-criar-post',
@@ -10,13 +11,14 @@ import { FormGroup, NgForm }  from '@angular/forms'
 })
 export class CriarPostComponent implements OnInit {
 
+  id: number;
   post = {} as Post
   posts: Post[]
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
 
-  constructor(private postService : PostService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private postService : PostService) { }
 
   ngOnInit(): void {
     this.getPosts()
@@ -25,9 +27,10 @@ export class CriarPostComponent implements OnInit {
   savePost(form: NgForm) {
     if (this.post.id !== undefined) {
 
-      this.postService.createPost(this.post).subscribe(() => {
+      this.postService.createPost(this.post).subscribe(() => { 
 
       });
+      
     } else {
       this.postService.createPost(this.post).subscribe(() => {
       
@@ -42,6 +45,10 @@ export class CriarPostComponent implements OnInit {
       this.posts = Posts;
     });
   }
+  save(){
+    this.router.navigate(['/painel/'+this.id]);
+  }
+
 
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
@@ -58,7 +65,7 @@ export class CriarPostComponent implements OnInit {
 
             return false;
         }
-
+ 
         /* if (!_.includes(allowed_types, fileInput.target.files[0].type)) {
             this.imageError = 'Only Images are allowed ( JPG | PNG )';
             return false;
