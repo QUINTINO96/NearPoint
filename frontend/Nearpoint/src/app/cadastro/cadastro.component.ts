@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
 import { FormGroup, NgForm }  from '@angular/forms'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -25,7 +26,7 @@ export class CadastroComponent implements OnInit {
   previewImagePath: any;
 
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
   this.confirmaSenha=0
@@ -148,11 +149,15 @@ onKeyUpEvent(event: any){
   }else{
     this.mensagem="As senhas conferem"
     this.confirmaSenha=1
+   
   }
   console.log(this.usuario.senha2);
   console.log(this.usuario.senha)
 
 }
 
+login(){
+  this.router.navigate(['/'])
+}
 }
 
