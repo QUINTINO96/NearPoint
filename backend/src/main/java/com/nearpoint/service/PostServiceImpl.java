@@ -40,7 +40,8 @@ public class PostServiceImpl implements PostService{
 		this.postRepository.delete(post);
 	}
 	
-	//@Override
-	//public List<Post> getAllProprietatios(){
-		//return this.empregadoRepository.findAllProprietario();
+	@Override
+	public List<Post> getListById(Long idUsu){
+		return this.postRepository.ListbyId(idUsu);
+	}
 }

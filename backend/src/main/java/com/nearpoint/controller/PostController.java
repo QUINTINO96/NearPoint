@@ -3,6 +3,7 @@ package com.nearpoint.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -49,14 +50,14 @@ public class PostController {
         .collect(Collectors.toList());
 	}
 	
-	//@CrossOrigin(origins = "http://localhost:4200")
-	//@GetMapping("/empregados/proprietarios")
-	//public List<PostDTO> findAllProprietatios(){
-	//	List<Cadastro> empregados = empregadoService.getAllProprietatios();
-	//	return empregados.stream()
-   //     .map(this::convertToDto)
-   //     .collect(Collectors.toList());
-	//}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/post/listagem/{id}")
+	public List<PostDTO> getListById( @PathVariable(value = "id")Long idUsu) {
+		List<Post> posts = postService.getListById(idUsu);
+		return posts.stream()
+        .map(this::convertToDto)
+        .collect(Collectors.toList());
+	}
 	
 
 	@CrossOrigin(origins = "http://localhost:4200")

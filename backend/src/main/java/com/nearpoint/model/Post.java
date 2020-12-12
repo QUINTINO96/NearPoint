@@ -26,6 +26,7 @@ public class Post {
 	private byte[] fotoanuncio;
 	private String titulo;
 	private String descricao;
+	private long idUsu;
 	
 	 @OneToOne(cascade = CascadeType.ALL, mappedBy = "Usuario")
 	    private Usuario usuario;
@@ -38,12 +39,13 @@ public class Post {
 	
 	
 
-	public Post(long id, byte[] fotoanuncio, String titulo, String descricao) {
+	public Post(long id, byte[] fotoanuncio, String titulo, String descricao,long idUsu) {
 		super();
 		this.id = id;
 		this.fotoanuncio = fotoanuncio;
 		this.titulo = titulo;
 		this.descricao = descricao;
+		this.idUsu = idUsu;
 	}
 
 
@@ -100,15 +102,28 @@ public class Post {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	
+
+
+
+	@Column(name = "idUsu", nullable = false)
+	public long getIdUsu() {
+		return idUsu;
+	}
+
+
+
+	public void setIdUsu(long idUsu) {
+		this.idUsu = idUsu;
+	}
 
 
 
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", fotoanuncio=" + Arrays.toString(fotoanuncio) + ", titulo=" + titulo
-				+ ", descricao=" + descricao + "]";
+				+ ", descricao=" + descricao + ", idUsu=" + idUsu + ", usuario=" + usuario + "]";
 	}
-	
-	
 	
 }

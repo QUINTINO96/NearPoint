@@ -11,17 +11,19 @@ public class PostDTO implements Serializable{
 	private byte[] fotoanuncio;
 	private String titulo;
 	private String descricao;
+	private long idUsu;
 	
 	public PostDTO() {
 		
 	}
 
-	public PostDTO(long id, byte[] fotoanuncio, String titulo, String descricao) {
+	public PostDTO(long id, byte[] fotoanuncio, String titulo, String descricao, long idUsu) {
 		super();
 		this.id = id;
 		this.fotoanuncio = fotoanuncio;
 		this.titulo = titulo;
 		this.descricao = descricao;
+		this.idUsu = idUsu;
 	}
 
 	public long getId() {
@@ -54,6 +56,15 @@ public class PostDTO implements Serializable{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+
+	public long getIdUsu() {
+		return idUsu;
+	}
+
+	public void setIdUsu(long idUsu) {
+		this.idUsu = idUsu;
 	}
 
 	public static long getSerialversionuid() {

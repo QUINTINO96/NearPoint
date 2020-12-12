@@ -1,6 +1,7 @@
+import { Post } from './../post.ts';
+import { Usuario } from './../usuario.ts';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service'
-import { Post } from '../post'
 import { FormGroup, NgForm }  from '@angular/forms'
 
 @Component({
@@ -94,5 +95,6 @@ export class CriarPostComponent implements OnInit {
         reader.readAsDataURL(fileInput.target.files[0]);
     }
 }
+
 
 }
