@@ -1,6 +1,7 @@
 package com.nearpoint.model;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
@@ -39,6 +40,7 @@ public class Usuario {
 	private String senha;
 	private Post anuncio;
 	private List<Post> listPosts;
+	private String foto;
 	
 	public Usuario() {
 		
@@ -52,7 +54,7 @@ public class Usuario {
 	}
 
 	public Usuario(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario, String sobrenome, 
-			byte[]fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
+			byte[] fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -174,15 +176,20 @@ public class Usuario {
 
 	
 
-	@Column(name = "fotoPerfil", length = 10000)
-	public byte[] getFotoPerfil() {
+	@Column(name = "fotoPerfil", length = 700000)
+	public String getFotoPerfil() throws UnsupportedEncodingException {
 		
-		return fotoPerfil;
+		String msgDecode = new String(fotoPerfil);
+	
+		return msgDecode;
 	}
 
-	public void setFotoPerfil(byte[] fotoPerfil) {
+	public void setFotoPerfil(String fotoP) {
 		
-		this.fotoPerfil = fotoPerfil;
+		Charset charset = Charset.forName("UTF-8");
+		this.fotoPerfil = fotoP.getBytes(charset);
+
+		
 	}
 
 	@OneToOne(cascade = CascadeType.ALL)

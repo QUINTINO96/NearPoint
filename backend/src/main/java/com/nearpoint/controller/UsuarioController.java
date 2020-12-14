@@ -1,6 +1,7 @@
 package com.nearpoint.controller;
 
 import java.io.Console;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,7 +96,7 @@ public class UsuarioController {
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/usuarios/{id}")
 	public ResponseEntity<Usuario> updateUsuario(@PathVariable(value = "id") Long usuarioId,
-			@Validated @RequestBody Usuario usuarioDetalhes) throws ResourceNotFoundException{
+			@Validated @RequestBody Usuario usuarioDetalhes) throws ResourceNotFoundException, UnsupportedEncodingException{
 		Usuario usuario = usuarioRepository.findById(usuarioId)
 				.orElseThrow(() -> new ResourceNotFoundException("Não foi possível atualizar :: " +usuarioId + ":: não localizado"));
 		

@@ -174,8 +174,8 @@
                             </div>
                             {{imageError}}
                                 <div class="custom-file fileInputProfileWrap">
-                                    <input   type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" name="fotoPerfil"  >
-                                    <div class="img-space">
+                                    <input type="file" (change)="fileChangeEvent($event)" class="fileInputProfile" name = "fotoPerfil"  >
+                                    <div class="img-space" >
 
                                         <ng-container *ngIf="isImageSaved; else elseTemplate">
                                             <img [src]="cardImageBase64"/>
@@ -196,7 +196,7 @@
                            
                         </div>
                        
-                        <button type="submit"  (click)="login()" class="btn btn-personalizado">Cadastrar</button>
+                        <button type="submit"  (click)="saveUsuario" class="btn btn-personalizado">Cadastrar</button>
                     </div>
                     
                   </form>

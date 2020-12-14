@@ -40,8 +40,10 @@ export class PainelPadraoComponent implements OnInit {
     
       console.log(this.posts)
 
+     
 
   }
+  
 
   
 

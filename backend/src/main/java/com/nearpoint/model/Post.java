@@ -1,5 +1,6 @@
 package com.nearpoint.model;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -64,15 +65,18 @@ public class Post {
 
 
 
-	@Column(name = "fotoAnuncio", length = 1000)
-	public byte[] getFotoanuncio() {
-		return fotoanuncio;
+	@Column(name = "fotoAnuncio", length = 700000)
+	public String getFotoanuncio() {
+		String msgDecode = new String(fotoanuncio);
+		
+		return msgDecode;
 	}
 
 
 
-	public void setFotoanuncio(byte[] fotoanuncio) {
-		this.fotoanuncio = fotoanuncio;
+	public void setFotoanuncio(String fotoanuncio) {
+		Charset charset = Charset.forName("UTF-8");
+		this.fotoanuncio = fotoanuncio.getBytes(charset);
 	}
 
 

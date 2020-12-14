@@ -1,6 +1,7 @@
 package com.nearpoint.beans;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.Date;
 
 
@@ -34,12 +35,15 @@ public class PostDTO implements Serializable{
 		this.id = id;
 	}
 
-	public byte[] getFotoanuncio() {
-		return fotoanuncio;
+	public String getFotoanuncio() {
+		String msgDecode = new String(fotoanuncio);
+		
+		return msgDecode;
 	}
 
-	public void setFotoanuncio(byte[] fotoanuncio) {
-		this.fotoanuncio = fotoanuncio;
+	public void setFotoanuncio(String fotoanuncio) {
+		Charset charset = Charset.forName("UTF-8");
+		this.fotoanuncio = fotoanuncio.getBytes(charset);
 	}
 
 	public String getTitulo() {

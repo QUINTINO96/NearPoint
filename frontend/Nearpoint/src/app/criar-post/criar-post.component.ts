@@ -18,6 +18,7 @@ export class CriarPostComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
+  previewImagePath: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private postService : PostService) { }
 
@@ -37,6 +38,7 @@ export class CriarPostComponent implements OnInit {
       
       });
     }
+    this.gotoList();
   }
 
 
@@ -45,9 +47,6 @@ export class CriarPostComponent implements OnInit {
     this.postService.getPostList().subscribe((Posts: Post[]) => {
       this.posts = Posts;
     });
-  }
-  save(){
-    this.router.navigate(['/painel/'+this.id]);
   }
 
 
@@ -94,7 +93,9 @@ export class CriarPostComponent implements OnInit {
                     const imgBase64Path = e.target.result;
                     this.cardImageBase64 = imgBase64Path;
                     this.isImageSaved = true;
-                    // this.previewImagePath = imgBase64Path;
+                      
+                      this.previewImagePath = imgBase64Path;
+                      this.post.fotoanuncio = imgBase64Path.toString();
                 }
             };
         };
@@ -103,5 +104,8 @@ export class CriarPostComponent implements OnInit {
     }
 }
 
+gotoList() {
+  this.router.navigate(['/painel/'+this.id]);
+}
 
 }

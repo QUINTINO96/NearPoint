@@ -5,6 +5,7 @@ import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
 import { FormGroup, NgForm }  from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-cadastro',
@@ -121,16 +122,19 @@ export class CadastroComponent implements OnInit {
                     this.isImageSaved = true;
 
                      this.previewImagePath = imgBase64Path;
+                     this.usuario.fotoPerfil = imgBase64Path.toString();
                 }
             };
         };
 
         reader.readAsDataURL(fileInput.target.files[0]);
+        
+        console.log(this.usuario.fotoPerfil);
 
         
-        this.usuario.fotoPerfil= btoa(this.usuario.fotoPerfil);
+       /*  this.usuario.fotoPerfil= btoa(this.usuario.fotoPerfil);
        
-        console.log(this.usuario.fotoPerfil);
+        console.log(this.usuario.fotoPerfil); */
         
         
         
@@ -156,8 +160,8 @@ onKeyUpEvent(event: any){
 
 }
 
-login(){
-  this.router.navigate(['/'])
+gotoList() {
+  this.router.navigate(['/']);
 }
 }
 

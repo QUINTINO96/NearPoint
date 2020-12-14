@@ -1,6 +1,7 @@
 package com.nearpoint.beans;
 
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class UsuarioDTO implements Serializable{
 	}
 
 	public UsuarioDTO(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario,
-			String sobrenome,byte[]fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
+			String sobrenome,byte[] fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
 			List<Post> listPosts) {
 		super();
 		this.id = id;
@@ -102,12 +103,19 @@ public class UsuarioDTO implements Serializable{
 		this.sobrenome = sobrenome;
 	}
 
-	public byte[] getFotoPerfil() {
-		return fotoPerfil;
+	public String getFotoPerfil() {
+		String msgDecode = new String(fotoPerfil);
+		
+		return msgDecode;
 	}
 
-	public void setFotoPerfil(byte[] fotoPerfil) {
-		this.fotoPerfil = fotoPerfil;
+	public void setFotoPerfil(String fotoP) {
+		
+		Charset charset = Charset.forName("UTF-8");
+		this.fotoPerfil = fotoP.getBytes(charset);
+
+		
+	
 	}
 
 	public Endereco getEnderecoUsu() {
