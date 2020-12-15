@@ -31,7 +31,7 @@ import com.nearpoint.repository.PostRepository;
 import com.nearpoint.service.PostService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 
 public class PostController {
 	

@@ -1,5 +1,4 @@
 import { getTestBed } from '@angular/core/testing';
-import { Endereco } from './../endereco';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
@@ -16,7 +15,6 @@ export class CadastroComponent implements OnInit {
 
   usuario = {} as Usuario
   usuarios: Usuario[]
-  endereco = {} as Endereco
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
@@ -32,23 +30,27 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {
   this.confirmaSenha=0
   this.saveUsuario
-  
-
-  
- 
   }
 
   saveUsuario(form: NgForm) {
-    if (this.usuario.id !== undefined) {
-      this.usuarioService.updateUsuario(this.usuario).subscribe(() => {
-        this.cleanForm(form);
-      });
-    } else {
+
       this.usuarioService.saveUsuario(this.usuario).subscribe(() => {
+        this.usuarioService.updateUsuario
+
+        this.usuarioService.getUsuarioByEmail(this.usuario.email) .subscribe(data => {
+          console.log(data)
+          this.usuario = data;
+
+          this.usuarioService.updateEndereco(this.usuario)        
+        }, error => console.log(error));
+
         this.cleanForm(form);
+       
       });
-    }
+
+    
     console.log(this.usuario)
+    this.router.navigate(['/login']);
   }
 
   // Chama o serviço para obtém todos os Usuarios
@@ -161,7 +163,7 @@ onKeyUpEvent(event: any){
 }
 
 gotoList() {
-  this.router.navigate(['/']);
+  this.router.navigate(['/login']);
 }
 }
 

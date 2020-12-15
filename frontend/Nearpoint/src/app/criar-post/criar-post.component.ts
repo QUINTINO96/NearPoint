@@ -23,22 +23,26 @@ export class CriarPostComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private postService : PostService) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
     this.getPosts()
   }
 
   savePost(form: NgForm) {
     if (this.post.id !== undefined) {
 
+      this.post.idUsu=this.id
       this.postService.createPost(this.post).subscribe(() => { 
 
       });
       
     } else {
+      this.post.idUsu=this.id
       this.postService.createPost(this.post).subscribe(() => {
       
       });
     }
     this.gotoList();
+   
   }
 
 
@@ -46,6 +50,7 @@ export class CriarPostComponent implements OnInit {
   getPosts() {
     this.postService.getPostList().subscribe((Posts: Post[]) => {
       this.posts = Posts;
+    
     });
   }
 
@@ -105,7 +110,9 @@ export class CriarPostComponent implements OnInit {
 }
 
 gotoList() {
+ 
   this.router.navigate(['/painel/'+this.id]);
+  
 }
 
 }

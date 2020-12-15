@@ -18,27 +18,45 @@ export class PainelPadraoComponent implements OnInit {
 
   post = {} as Post
   posts: Post[]
+  postsUsu: Post[]
+
+  tipoUsuario: number
   
   constructor(private route: ActivatedRoute, private router: Router, private usuarioService: UsuarioService,private postService: PostService) { }
 
   ngOnInit(): void {
+    
     this.usuario = new Usuario();
-
+   
     this.id = this.route.snapshot.params['id'];
 
     this.usuarioService.getUsuarioById(this.id)
       .subscribe(data => {
         console.log(data)
         this.usuario = data;
+        if(this.usuario.tipoUsuario==0){
+          this.tipoUsuario=0
+        }else if(this.usuario.tipoUsuario==1){
+          this.tipoUsuario=1
+        }
+        console.log(this.tipoUsuario)
+        
       }, error => console.log(error));
 
+      window.location.reload
       this.postService.getPostList()
       .subscribe(data => {
+       
         console.log(data)
         this.posts = data;
       }, error => console.log(error));
+
+      this.postService.getPostListUsu(this.id)
+      .subscribe(data => {
+        console.log(data)
+        this.postsUsu = data;
+      }, error => console.log(error));
     
-      console.log(this.posts)
 
      
 

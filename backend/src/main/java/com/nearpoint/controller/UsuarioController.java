@@ -56,6 +56,12 @@ public class UsuarioController {
 	@GetMapping("/usuarios")
 	public List<Usuario> getAlUsuarios(){
 		return usuarioRepository.findAll();
+		
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/usuarios/email/{email}")
+	public List<Usuario> getListByEmail(@PathVariable(value = "email")String email){
+		return usuarioRepository.findAll();
 	}
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -80,17 +86,6 @@ public class UsuarioController {
 	public Usuario addUsuario(@Valid @RequestBody Usuario usuario) {
 		return usuarioRepository.save(usuario);
 	}
-	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping("/cadastro/{id}")
-	public ResponseEntity<Usuario> updateEndereco(@PathVariable(value = "id") Long usuarioId,
-			@Validated @RequestBody Usuario usuarioDetalhes) throws ResourceNotFoundException{
-		Usuario usuario = usuarioRepository.findById(usuarioId)
-				.orElseThrow(() -> new ResourceNotFoundException("Não foi possível atualizar :: " +usuarioId + ":: não localizado"));
-		
-		usuario.setEnderecoUsu(usuario.getEnderecoUsu());
-		final Usuario upUsuario = usuarioRepository.save(usuario);
-		return ResponseEntity.ok(upUsuario);
-	}
 	
 	
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -102,7 +97,12 @@ public class UsuarioController {
 		
 		usuario.setNome(usuarioDetalhes.getNome());
 		usuario.setTelefone(usuarioDetalhes.getTelefone());
-		usuario.setEnderecoUsu(usuarioDetalhes.getEnderecoUsu());
+		usuario.setRua(usuarioDetalhes.getRua());
+		usuario.setBairro(usuarioDetalhes.getBairro());
+		usuario.setComplemento(usuarioDetalhes.getComplemento());
+		usuario.setCEP(usuarioDetalhes.getCEP());
+		usuario.setCidade(usuario.getCidade());
+		usuario.setEstado(usuarioDetalhes.getEstado());
 		usuario.setListPosts(usuarioDetalhes.getListPosts());
 		usuario.setEmail(usuarioDetalhes.getEmail());
 		usuario.setTelefone(usuarioDetalhes.getTelefone());

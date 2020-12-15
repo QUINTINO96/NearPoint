@@ -10,6 +10,7 @@ import { UpdatePostComponent } from './update-post/update-post.component'
 
 
 
+
 const routes: Routes = [
   { path: '',component: LoginComponent},
   { path: 'cadastro', component: CadastroComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'update-usuario/:id',component: UpdateUsuarioComponent},
   { path: 'criar/:id',component: CriarPostComponent},
   { path: 'update-post/:id', component: UpdatePostComponent },
+
 ];
 
 @NgModule({

@@ -6,8 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.nearpoint.model.Post;
-import com.nearpoint.model.Endereco;
-import com.nearpoint.enums.Tipo;
+
 
 public class UsuarioDTO implements Serializable{
 
@@ -17,10 +16,15 @@ public class UsuarioDTO implements Serializable{
 	private String email;
 	private String telefone;
 	private String cpf;
-	private Tipo tipoUsuario;
+	private int tipoUsuario;
 	private String sobrenome;
 	private byte[] fotoPerfil;
-	private Endereco enderecoUsu;
+	private String Rua;
+	private String Bairro;
+	private String Complemento;
+	private String Cidade;
+	private String Estado;
+	private String CEP;
 	private String dataNascimento;
 	private String senha;
 	private List<Post> listPosts;
@@ -29,9 +33,10 @@ public class UsuarioDTO implements Serializable{
 		super();
 	}
 
-	public UsuarioDTO(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario,
-			String sobrenome,byte[] fotoPerfil, Endereco enderecoUsu, String dataNascimento, String senha,
-			List<Post> listPosts) {
+	
+	public UsuarioDTO(long id, String nome, String email, String telefone, String cpf, int tipoUsuario,
+			String sobrenome, byte[] fotoPerfil, String rua, String bairro, String complemento, String cidade,
+			String estado, String cEP, String dataNascimento, String senha, List<Post> listPosts) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -41,11 +46,17 @@ public class UsuarioDTO implements Serializable{
 		this.tipoUsuario = tipoUsuario;
 		this.sobrenome = sobrenome;
 		this.fotoPerfil = fotoPerfil;
-		this.enderecoUsu = enderecoUsu;
+		Rua = rua;
+		Bairro = bairro;
+		Complemento = complemento;
+		Cidade = cidade;
+		Estado = estado;
+		CEP = cEP;
 		this.dataNascimento = dataNascimento;
 		this.senha = senha;
 		this.listPosts = listPosts;
 	}
+
 
 	public long getId() {
 		return id;
@@ -87,11 +98,11 @@ public class UsuarioDTO implements Serializable{
 		this.cpf = cpf;
 	}
 
-	public Tipo getTipoUsuario() {
+	public int getTipoUsuario() {
 		return tipoUsuario;
 	}
 
-	public void setTipoUsuario(Tipo tipoUsuario) {
+	public void setTipoUsuario(int tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
 
@@ -114,17 +125,67 @@ public class UsuarioDTO implements Serializable{
 		Charset charset = Charset.forName("UTF-8");
 		this.fotoPerfil = fotoP.getBytes(charset);
 
-		
-	
 	}
 
-	public Endereco getEnderecoUsu() {
-		return enderecoUsu;
+	public String getRua() {
+		return Rua;
 	}
 
-	public void setEnderecoUsu(Endereco enderecoUsu) {
-		this.enderecoUsu = enderecoUsu;
+
+	public void setRua(String rua) {
+		Rua = rua;
 	}
+
+
+	public String getBairro() {
+		return Bairro;
+	}
+
+
+	public void setBairro(String bairro) {
+		Bairro = bairro;
+	}
+
+
+	public String getComplemento() {
+		return Complemento;
+	}
+
+
+	public void setComplemento(String complemento) {
+		Complemento = complemento;
+	}
+
+
+	public String getCidade() {
+		return Cidade;
+	}
+
+
+	public void setCidade(String cidade) {
+		Cidade = cidade;
+	}
+
+
+	public String getEstado() {
+		return Estado;
+	}
+
+
+	public void setEstado(String estado) {
+		Estado = estado;
+	}
+
+
+	public String getCEP() {
+		return CEP;
+	}
+
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
+
 
 	public String getDataNascimento() {
 		return dataNascimento;

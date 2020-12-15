@@ -21,5 +21,7 @@ public interface UsuarioService {
 	void deleteUsuario(Usuario usuario);
     
     List<Usuario> getValidade();
+    
+    List<Usuario> getListByEmail(String email);
 
 }

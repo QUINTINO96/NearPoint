@@ -56,5 +56,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 	public List<Usuario> getValidade() {
 		return this.usuarioRepository.Validade();
 	}
+    
+    @Override
+   	public List<Usuario> getListByEmail(String email) {
+   		return this.usuarioRepository.ListByEmail(email);
+   	}
 	
 }

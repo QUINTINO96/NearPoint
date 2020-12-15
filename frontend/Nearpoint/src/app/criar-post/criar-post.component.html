@@ -14,6 +14,7 @@
             </div>
             <div class="card-body">
                 <form (ngSubmit)="f.form.valid && savePost(f)" name="f" #f="ngForm" novalidate>
+                    <input [(ngModel)]="post.idUsu" type="hidden" class="form-control" placeholder="titulo"  #idUsu = "ngModel" value="{{id}}">
                     <label><b>Título</b></label>
                     <hr>
                     <div class="form-row">

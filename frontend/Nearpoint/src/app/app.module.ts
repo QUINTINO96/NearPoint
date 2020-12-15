@@ -22,7 +22,6 @@ import {HttpClientModule} from '@angular/common/http'
 import { UpdateUsuarioComponent } from './update-usuario/update-usuario.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PainelPadraoComponent,
     CriarPostComponent,
     UpdateUsuarioComponent,
+
  
 
     

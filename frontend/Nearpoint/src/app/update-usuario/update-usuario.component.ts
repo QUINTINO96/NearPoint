@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService }  from '../usuario.service'
 import { Usuario }  from '../usuario'
-import { Endereco } from '../endereco'
 import { FormGroup, NgForm }  from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 

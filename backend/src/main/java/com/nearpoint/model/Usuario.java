@@ -3,6 +3,7 @@ package com.nearpoint.model;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
@@ -19,9 +20,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.ManyToAny;
 
-import com.nearpoint.enums.Tipo;
-import com.nearpoint.model.Endereco;
-
 
 @Entity
 @Table(name = "usuarios")
@@ -32,10 +30,15 @@ public class Usuario {
 	private String email;
 	private String telefone;
 	private String cpf;
-	private Tipo tipoUsuario;
+	private int tipoUsuario;
 	private String sobrenome;
 	private byte[] fotoPerfil;
-	private Endereco enderecoUsu;
+	private String Rua;
+	private String Bairro;
+	private String Complemento;
+	private String Cidade;
+	private String Estado;
+	private String CEP;
 	private String dataNascimento;
 	private String senha;
 	private Post anuncio;
@@ -53,8 +56,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Usuario(long id, String nome, String email, String telefone, String cpf, Tipo tipoUsuario, String sobrenome, 
-			byte[] fotoPerfil,Endereco enderecoUsu, String dataNascimento, String senha, Post anuncio, List<Post> listPosts) {
+	
+
+	public Usuario(long id, String nome, String email, String telefone, String cpf, int tipoUsuario, String sobrenome,
+			byte[] fotoPerfil, String rua, String bairro, String complemento, String cidade, String estado, String cEP,
+			String dataNascimento, String senha, Post anuncio, List<Post> listPosts, String foto) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -64,11 +70,17 @@ public class Usuario {
 		this.tipoUsuario = tipoUsuario;
 		this.sobrenome = sobrenome;
 		this.fotoPerfil = fotoPerfil;
-		this.enderecoUsu = enderecoUsu;
+		Rua = rua;
+		Bairro = bairro;
+		Complemento = complemento;
+		Cidade = cidade;
+		Estado = estado;
+		CEP = cEP;
 		this.dataNascimento = dataNascimento;
 		this.senha = senha;
 		this.anuncio = anuncio;
 		this.listPosts = listPosts;
+		this.foto = foto;
 	}
 
 	@Id
@@ -147,14 +159,14 @@ public class Usuario {
 
 
 	@Column(name = "tipo", nullable = false)
-	public Tipo getTipoUsuario() {
+	public int getTipoUsuario() {
 		return tipoUsuario;
 	}
 
 
 
 
-	public void setTipoUsuario(Tipo tipoUsuario) {
+	public void setTipoUsuario(int tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
 
@@ -192,21 +204,60 @@ public class Usuario {
 		
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Endereco_id", referencedColumnName = "id")
-	public Endereco getEnderecoUsu() {
-		return enderecoUsu;
+
+	@Column(name = "rua", nullable = false)
+	public String getRua() {
+		return Rua;
 	}
 
-
-
-
-	public void setEnderecoUsu(Endereco enderecoUsu) {
-		this.enderecoUsu = enderecoUsu;
+	public void setRua(String rua) {
+		Rua = rua;
 	}
 
+	@Column(name = "bairro", nullable = false)
+	public String getBairro() {
+		return Bairro;
+	}
 
+	public void setBairro(String bairro) {
+		Bairro = bairro;
+	}
 
+	@Column(name = "complemento", nullable = false)
+	public String getComplemento() {
+		return Complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		Complemento = complemento;
+	}
+
+	@Column(name = "cidade", nullable = false)
+	public String getCidade() {
+		return Cidade;
+	}
+
+	public void setCidade(String cidade) {
+		Cidade = cidade;
+	}
+
+	@Column(name = "estado", nullable = false)
+	public String getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(String estado) {
+		Estado = estado;
+	}
+
+	@Column(name = "cep", nullable = false)
+	public String getCEP() {
+		return CEP;
+	}
+
+	public void setCEP(String cEP) {
+		CEP = cEP;
+	}
 
 	@Column(name = "dataNascimento", nullable = false)
 	public String getDataNascimento() {
@@ -260,8 +311,11 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", cpf=" + cpf
-				+ ", tipoUsuario=" + tipoUsuario + ", sobrenome=" + sobrenome + ", enderecoUsu=" + enderecoUsu
-				+ ", dataNascimento=" + dataNascimento + ", senha=" + senha + ", anuncio=" + anuncio + ", listPosts="
-				+ listPosts + "]";
+				+ ", tipoUsuario=" + tipoUsuario + ", sobrenome=" + sobrenome + ", fotoPerfil="
+				+ Arrays.toString(fotoPerfil) + ", Rua=" + Rua + ", Bairro=" + Bairro + ", Complemento=" + Complemento
+				+ ", Cidade=" + Cidade + ", Estado=" + Estado + ", CEP=" + CEP + ", dataNascimento=" + dataNascimento
+				+ ", senha=" + senha + ", anuncio=" + anuncio + ", listPosts=" + listPosts + ", foto=" + foto + "]";
 	}
+
+	
 }

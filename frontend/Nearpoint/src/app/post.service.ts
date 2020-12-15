@@ -71,4 +71,8 @@ export class PostService {
     return throwError(errorMessage);
   };
 
+  getPostListUsu(id: number): Observable<Post[]> {
+    return this.http.get<Post[]>('http://localhost:8080/springboot-crud-rest/api/v1/post/listagem/'+id);
+  }
+
 }

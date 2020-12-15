@@ -1,9 +1,5 @@
 import { ArrayType } from '@angular/compiler';
-import { Endereco } from './endereco';
-
-
-
-export class Usuario extends Endereco{
+export class Usuario {
 
     
     id: number;
@@ -14,7 +10,12 @@ export class Usuario extends Endereco{
     tipoUsuario :number; // verificar se o tipo numero existe realmente
     sobrenome:string;
     fotoPerfil: string;
-    endereco : Endereco;//olhar depois como declarar um objeto
+    rua: string;
+    bairro: string;
+    cep: string;
+    complemento: string;
+    estado: string;
+    cidade: string;
     dataNascimento:string; //olhar depois como declarar data
     senha:string;
     senha2:string;

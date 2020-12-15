@@ -41,6 +41,14 @@ export class UsuarioService {
       )
   }
 
+  getUsuarioByEmail(email: string): Observable<Usuario> {
+    return this.http.get<Usuario>(this.url + '/email/' + email)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
   // salva um Usuarioro
   saveUsuario(Usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>('http://localhost:8080/springboot-crud-rest/api/v1/cadastro', JSON.stringify(Usuario), this.httpOptions)
@@ -53,6 +61,14 @@ export class UsuarioService {
   // utualiza um Usuarioro
   updateUsuario(Usuario: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(this.url + '/' + Usuario.id, JSON.stringify(Usuario), this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      )
+  }
+
+  updateEndereco(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>("http://localhost:8080/springboot-crud-rest/api/v1/cadastro/" + usuario.id, JSON.stringify(Usuario), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)

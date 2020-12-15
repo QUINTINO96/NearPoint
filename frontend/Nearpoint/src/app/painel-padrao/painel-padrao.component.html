@@ -16,7 +16,7 @@
                         <div class="row col-12 mt-5">
                             <div class="col-4" *ngFor="let x of posts">
                                 <div class="card" style="width: 100%;">
-                                    <img src="https://images.pexels.com/photos/3319218/pexels-photo-3319218.jpeg?cs=srgb&dl=pexels-adrien-olichon-3319218.jpg&fm=jpg" class="card-img-top" alt="...">
+                                    <img src="{{x.fotoanuncio}}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                       <h5 class="card-title">{{x.titulo}}</h5>
                                       <p class="card-text">{{x.descricao}}</p>
@@ -30,7 +30,7 @@
                         
                         
                     </mat-tab>
-                    <mat-tab label="Perfil" *ngIf="usuario">
+                    <mat-tab label="Perfil">
                         
                         <div class="row py-1 px-1 mt-3">
                             <div class="col-xl-4 col-md-6 col-sm-10 mx-auto">
@@ -39,7 +39,7 @@
                                 <div class="bg-white shadow rounded overflow-hidden">
                                     <div class="px-4 pt-0 pb-4 bg-dark">
                                         <div class="media align-items-end profile-header">
-                                            <div class="profile mr-3"><img src="https://d19m59y37dris4.cloudfront.net/university/1-1-1/img/teacher-4.jpg" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="./update-usuario/{{usuario.id}}" class="btn btn-dark btn-sm btn-block">Edit profile</a></div>
+                                            <div class="profile mr-3"><img src="{{usuario.fotoPerfil}}" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="./update-usuario/{{usuario.id}}" class="btn btn-dark btn-sm btn-block">Edit profile</a></div>
                                             <div class="media-body mb-5 text-white">
                                                 <h4 class="mt-0 mb-0">{{usuario.nome}} {{usuario.sobrenome}}</h4>
                                             </div>
@@ -60,7 +60,7 @@
                                             <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294926/cody-davis-253925-unsplash_hsetv7.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
                                             <div class="col-lg-6 pl-lg-1"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556294928/tim-foster-734470-unsplash_xqde00.jpg" alt="" class="img-fluid rounded shadow-sm"></div>
                                         </div>
-                                        <a href="/criar/{{id}}" class="btn btn-success btn-sm btn-block">Criar Post</a>
+                                        <a *ngIf="tipoUsuario==1" href="/criar/{{id}}" class="btn btn-success btn-sm btn-block">Criar Post</a>
                                         
                                     </div>
                                 </div><!-- End profile widget -->
@@ -69,17 +69,15 @@
                         </div>
                     
                     </mat-tab> 
-                    <mat-tab label="Meus Anúncios">
+                    <mat-tab *ngIf="tipoUsuario==1" label="Meus Anúncios">
                         <div class="row col-12 mt-5">
-                            <div class="col-4">
+                            <div class="col-4" *ngFor="let x of postsUsu">
                                 <div class="card" style="width: 100%;">
-                                    <img src="https://images.pexels.com/photos/3319218/pexels-photo-3319218.jpeg?cs=srgb&dl=pexels-adrien-olichon-3319218.jpg&fm=jpg" class="card-img-top" alt="...">
+                                    <img src="{{x.fotoanuncio}}" class="card-img-top" alt="...">
                                     <div class="card-body">
-                                      <h5 class="card-title">Card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                      <a href="/update-post" class="btn btn-dark btn-sm btn-block">Editar posts</a>
+                                      <h5 class="card-title">{{x.titulo}}</h5>
+                                      <p class="card-text">{{x.descricao}}</p>
                                     </div>
-                                    
                                 </div>
                             </div>
                         </div>
